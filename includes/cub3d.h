@@ -6,11 +6,13 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/06 15:04:45 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:08:39 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_3D
-# define CUB_3D
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include <stdio.h>
 
 #endif
