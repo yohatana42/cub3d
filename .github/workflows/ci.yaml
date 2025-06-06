@@ -1,0 +1,18 @@
+name: cub3d CI
+
+on:
+    push:
+        branches:
+            - "**"
+
+jobs:
+    check:
+        runs-on: ubuntu-24.04
+        steps:
+        - uses: actions/checkout@v4
+        - name: norm
+          run: |
+              pip install norminette
+              norminette srcs/*.c includes/*.h
+        # - name: make
+        #   run: make
