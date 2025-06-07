@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/07 13:45:23 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/07 13:21:28 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/07 13:21:53 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include <stdio.h>
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
-# include "../libft/libft.h"
-
-// validation
-int	valid_args(char *map_file);
-
-// error
-void	print_error(char *str);
-
-#endif
+void	print_error(char *str)
+{
+	printf("Error\n");
+	printf("%s\n", str);
+}

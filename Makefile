@@ -1,6 +1,8 @@
-NAME	= minishell
-MAIN = srcs/main.c
-SRCS	=
+NAME	= cub3d
+MAIN	= srcs/main.c
+SRCS	= \
+		srcs/valid_args.c\
+		srcs/error.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -24,7 +26,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a -lXext -lX11 -lm -lz
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@

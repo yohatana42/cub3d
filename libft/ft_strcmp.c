@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 19:26:50 by yohatana          #+#    #+#             */
-/*   Updated: 2025/03/19 19:37:01 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/07 13:38:45 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_strcmp(char *str1, char *str2)
 
 	i = 0;
 	if (str1 == NULL)
-	str1_len = 0;
+		str1_len = 0;
 	else
-	str1_len = (int)ft_strlen(str1);
+		str1_len = (int)ft_strlen(str1);
 	if (str2 == NULL)
 		str2_len = 0;
 	else

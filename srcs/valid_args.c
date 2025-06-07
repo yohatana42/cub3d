@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   valid_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/07 13:45:23 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/07 13:21:32 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/07 14:20:15 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include <stdio.h>
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
-# include "../libft/libft.h"
+static int	is_cub_suffix(char *map_file);
 
-// validation
-int	valid_args(char *map_file);
+int	valid_args(char *map_file)
+{
+	if (!is_cub_suffix(map_file))
+	{
+		print_error("useage: ./cub3d [file name].cub");
+		return (1);
+	}
+	return (0);
+}
 
-// error
-void	print_error(char *str);
+static int	is_cub_suffix(char *map_file)
+{
+	size_t	len;
 
-#endif
+	len = ft_strlen(map_file);
+	if (ft_strcmp(&map_file[len - 4], ".cub\0") == 0)
+		return (1);
+	else
+		return (0);
+}
