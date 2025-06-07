@@ -1,4 +1,4 @@
-NAME	= minishell
+NAME	= cub3d
 MAIN = srcs/main.c
 SRCS	=
 HEADERS	= \
