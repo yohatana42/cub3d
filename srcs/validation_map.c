@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   validation_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 17:50:33 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:24:49 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/08 14:21:54 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3d.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+/*
+1. ファイル名が.cub
+2. 各要素が空白で区切られていること
+壁のテクスチャが存在すること
+テクスチャのパスが存在すること
+テクスチャのフォーマットが正しいこと
+3. mapが壁で囲われてること
+4. mapの文字種類が0, 1, NEWSのみ
+*/
+void	validation_map(t_data *data)
 {
-	if (lst == NULL || f == NULL)
-		return ;
-	while (ft_lstsize(lst))
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	(void)data;
 }

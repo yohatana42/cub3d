@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 17:50:33 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:24:49 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/07 13:21:28 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/08 13:50:44 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3d.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	print_error(char *str)
 {
-	if (lst == NULL || f == NULL)
-		return ;
-	while (ft_lstsize(lst))
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	printf("Error\n");
+	printf("%s\n", str);
+}
+
+void	exit_error(char *str)
+{
+	print_error(str);
+	exit(EXIT_FAILURE);
 }

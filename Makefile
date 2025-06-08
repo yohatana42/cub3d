@@ -1,6 +1,12 @@
 NAME	= cub3d
-MAIN = srcs/main.c
-SRCS	=
+MAIN	= srcs/main.c
+SRCS	= 	srcs/init_data.c\
+			srcs/error.c\
+			srcs/mlx_event.c\
+			srcs/init_mlx.c\
+			srcs/draw_init.c\
+			srcs/clean_up.c\
+			srcs/validation_map.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -24,7 +30,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT)
+	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
