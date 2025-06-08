@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/07 13:45:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 10:49:27 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
-
-// validation
-int	valid_args(char *map_file);
+# include "../get_next_line/get_next_line.h"
 
 // error
-void	print_error(char *str);
+void		print_error(char *str);
 
 #endif
