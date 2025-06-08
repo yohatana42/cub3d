@@ -1,7 +1,12 @@
 NAME	= cub3d
 MAIN	= srcs/main.c
 SRCS	= 	srcs/init_data.c\
-			srcs/error.c
+			srcs/error.c\
+			srcs/mlx_event.c\
+			srcs/init_mlx.c\
+			srcs/draw_init.c\
+			srcs/clean_up.c\
+			srcs/validation_map.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
