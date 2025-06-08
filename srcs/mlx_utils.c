@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/08 15:46:03 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:50:41 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 
 int	render_next_frame(t_mlx_data *mlx_data)
 {
-	mlx_put_image_to_window(mlx_data->mlx, mlx_data->win, mlx_data->img.img, 0, 0);
+	mlx_put_image_to_window(
+		mlx_data->mlx,
+		mlx_data->win,
+		mlx_data->img.img,
+		0,
+		0
+		);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:46:27 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:51:29 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef struct s_map_data
 	t_color	*floor;
 }	t_map_data;
 
-typedef struct	s_img_data {
+typedef struct s_img_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

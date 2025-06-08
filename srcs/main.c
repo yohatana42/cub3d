@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:38:15 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:50:37 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 */
 int	main(int argc, char **argv)
 {
-	(void)argv;
 	t_map_data	map_data;
 	t_mlx_data	mlx_data;
 
