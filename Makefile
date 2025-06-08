@@ -30,7 +30,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT)
+	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT)/libft.a -L$(MINILIBX_DIR)/libmlx_Linux.a
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
