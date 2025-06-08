@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 16:14:36 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:38:29 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 */
 void	validation_map(t_line **head, t_map_data *map_data)
 {
+	(void)head;
 	(void)map_data;
 }

@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 16:36:24 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:45:49 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <X11/keysym.h>
+# include <stdlib.h>
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 
 # define WINDOW_NAME "cub3d"
 # define WIDTH 960
@@ -81,6 +83,8 @@ void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
 void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
 void		init_mlx(t_mlx_data *mlx_data);
 void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+
+void		free_line_list(t_line **head);
 
 // error
 void		print_error(char *str);

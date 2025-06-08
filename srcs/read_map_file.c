@@ -6,13 +6,13 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 16:35:45 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:43:42 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static t_line	*create_line_node(char str);
+static t_line	*create_line_node(char *str);
 static bool		add_line_list(t_line *node, t_line **head);
 
 t_line	**read_map_file(char *map_file, t_line **head)
@@ -35,7 +35,7 @@ t_line	**read_map_file(char *map_file, t_line **head)
 	return (head);
 }
 
-static t_line	*create_line_node(char str)
+static t_line	*create_line_node(char *str)
 {
 	t_line	*node;
 
@@ -65,4 +65,10 @@ static bool	add_line_list(t_line *node, t_line **head)
 		last_node->next = node;
 	}
 	return (false);
+}
+
+void	free_line_list(t_line **head)
+{
+	if (head == NULL)
+		return ;
 }
