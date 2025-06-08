@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 13:59:59 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:05:08 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
 
+typedef struct s_color
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_color;
+
 typedef struct s_data
 {
 	char	**map;
@@ -26,8 +33,8 @@ typedef struct s_data
 	char	*south_path;
 	char	*west_path;
 	char	*east_path;
-	char	*roof;
-	char	*floor;
+	t_color	*roof;
+	t_color	*floor;
 }	t_data;
 
 typedef struct s_mlx_data
