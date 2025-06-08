@@ -6,11 +6,11 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:23:53 by yohatana          #+#    #+#             */
-/*   Updated: 2025/01/29 14:16:09 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:25:13 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static int	set_search(char s1_char, char const *set);
 static char	*get_start(char const *s1, char const *set);

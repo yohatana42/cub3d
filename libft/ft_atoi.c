@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:19:43 by yohatana          #+#    #+#             */
-/*   Updated: 2024/05/23 14:49:20 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:24:11 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static int	check_overflow(unsigned long result, unsigned int d, int minus_flg);
 static int	skip_space(char c);
