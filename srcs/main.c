@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 13:53:56 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:00:30 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 int	main(int argc, char **argv)
 {
 	t_data		*data;
-	t_mlx_data	*mlx;
+	// t_mlx_data	*mlx;
 
 	data = NULL;
-	mlx = NULL;
+	// mlx = NULL;
 	if (argc != 2)
 		exit_error("usage: ./cub3d [file name].cub");
 	init_data(argv[1], data);
