@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:13:44 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:50:25 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:23:49 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	draw_init(t_mlx_data *mlx_data, t_map_data *map_data)
 {
-	mlx_data->img.img = mlx_new_image(mlx_data->mlx, WIDTH, HEIGHT);
+	mlx_data->img.img = mlx_new_image(
+		mlx_data->mlx,
+		WINDOW_WIDTH,
+		WINDOW_HEIGHT
+		);
 	if (!mlx_data->img.img)
 	{
 		mlx_destroy_window(mlx_data->mlx, mlx_data->win);

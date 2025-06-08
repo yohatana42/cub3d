@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:51:29 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:23:49 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # include "../libft/libft.h"
 
 # define WINDOW_NAME "cub3d"
-# define WIDTH 960
-# define HEIGHT 540
+# define WINDOW_WIDTH 960
+# define WINDOW_HEIGHT 540
+# define MAP_WIDTH 24
+# define MAP_HEIGHT 24
 
 enum
 {
@@ -63,6 +65,12 @@ typedef struct s_mlx_data
 	t_img_data	img;
 }	t_mlx_data;
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vec;
+
 void	init_data(char *map_name, t_map_data *data);
 void	validation_map(t_map_data *data);
 void	clean_up(t_mlx_data *mlx_data, t_map_data *data);
@@ -80,5 +88,7 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int		render_next_frame(t_mlx_data *mlx_data);
 int		close_window(t_mlx_data *mlx_data);
 int		key_hook(int keycode, t_mlx_data *mlx_data);
+
+void	ray_caster(void);
 
 #endif
