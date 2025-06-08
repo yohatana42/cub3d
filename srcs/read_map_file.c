@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   read_map_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:14:16 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/08 15:52:26 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(char *map_name, t_data *data)
+t_line	**read_map_file(char *map_file)
 {
-	(void)map_name;
-	(void)data;
-	int	fd;
+	int		fd;
+	char	*str;
+	t_line	*head;
 
-	/*
-	1. .cubで終わること
-	2. ファイルをopen
-	3. get_next_lineで二重配列ですべて回収（毎回あろケーとする？）
-		4. 先頭の1か2文字を見て対応する構造体に突っ込む
-		9. マップの二重配列を突っ込む
-	*/
+	str = get_next_line(fd);
+	return (&head);
+}
 
+static t_line	*create_line_node(char str)
+{
+
+}
+
+static bool	add_line_list(t_line *node, t_line **head)
+{
+	return (false);
 }
