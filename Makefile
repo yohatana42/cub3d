@@ -6,7 +6,9 @@ SRCS	= 	srcs/init_data.c\
 			srcs/init_mlx.c\
 			srcs/draw_init.c\
 			srcs/clean_up.c\
-			srcs/validation_map.c
+			srcs/validation_map.c\
+			srcs/mlx_utils.c\
+			srcs/draw.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -46,5 +48,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+norm:
+	norminette srcs/*.c includes/*.h
 
 .PHONY: all clean fclean re

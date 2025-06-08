@@ -6,24 +6,14 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:14:16 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 16:36:10 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(char *map_name, t_data *data)
+void	init_data(t_line **head, t_map_data *map_data)
 {
-	(void)map_name;
-	(void)data;
-	int	fd;
-
-	/*
-	1. .cubで終わること
-	2. ファイルをopen
-	3. get_next_lineで二重配列ですべて回収（毎回あろケーとする？）
-		4. 先頭の1か2文字を見て対応する構造体に突っ込む
-		9. マップの二重配列を突っ込む
-	*/
-
+	(void)head;
+	(void)map_data;
 }
