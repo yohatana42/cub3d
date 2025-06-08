@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:21:54 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:05:03 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 3. mapが壁で囲われてること
 4. mapの文字種類が0, 1, NEWSのみ
 */
-void	validation_map(t_data *data)
+void	validation_map(t_map_data *map_data)
 {
-	(void)data;
+	(void)map_data;
 }

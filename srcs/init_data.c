@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:00:20 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:10:43 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(char *map_name, t_data *data)
+void	init_data(char *map_name, t_map_data *map_data)
 {
 	(void)map_name;
-	(void)data;
+	(void)map_data;
 }
