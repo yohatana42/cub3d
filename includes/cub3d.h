@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:21:10 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:46:27 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdbool.h>
+# include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 // # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
@@ -22,6 +23,11 @@
 # define WINDOW_NAME "cub3d"
 # define WIDTH 960
 # define HEIGHT 540
+
+enum
+{
+	ON_DESTROY = 17
+};
 
 typedef struct s_color
 {
@@ -60,6 +66,7 @@ void	init_data(char *map_name, t_map_data *data);
 void	validation_map(t_map_data *data);
 void	clean_up(t_mlx_data *mlx_data, t_map_data *data);
 void	draw_init(t_mlx_data *mlx_data, t_map_data *data);
+void	draw(t_mlx_data *mlx_data, t_map_data *map_data);
 void	init_mlx(t_mlx_data *mlx_data);
 void	mlx_event(t_mlx_data *mlx_data, t_map_data *data);
 
@@ -71,5 +78,6 @@ void	exit_error(char *str);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int		render_next_frame(t_mlx_data *mlx_data);
 int		close_window(t_mlx_data *mlx_data);
+int		key_hook(int keycode, t_mlx_data *mlx_data);
 
 #endif

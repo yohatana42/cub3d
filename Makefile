@@ -7,7 +7,8 @@ SRCS	= 	srcs/init_data.c\
 			srcs/draw_init.c\
 			srcs/clean_up.c\
 			srcs/validation_map.c\
-			srcs/mlx_utils.c
+			srcs/mlx_utils.c\
+			srcs/draw.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)

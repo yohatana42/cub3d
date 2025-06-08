@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/08 15:21:11 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:46:03 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,13 @@ int	close_window(t_mlx_data *mlx_data)
 	mlx_destroy_display(mlx_data->mlx);
 	free(mlx_data->mlx);
 	exit(EXIT_SUCCESS);
+	return (0);
+}
+
+int	key_hook(int keycode, t_mlx_data *mlx_data)
+{
+	if (keycode == XK_Escape)
+		close_window(mlx_data);
+	render_next_frame(mlx_data);
 	return (0);
 }
