@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:19:19 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:32:25 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+// # include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
 
 typedef struct s_color
