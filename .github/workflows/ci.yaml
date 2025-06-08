@@ -14,5 +14,7 @@ jobs:
           run: |
               pip install norminette
               norminette srcs/*.c includes/*.h
-        # - name: make
-        #   run: make
+        - name: make
+          run: make
+        - name: clean_up
+          run: make fclean
