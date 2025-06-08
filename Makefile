@@ -1,6 +1,7 @@
 NAME	= cub3d
-MAIN = srcs/main.c
-SRCS	=
+MAIN	= srcs/main.c
+SRCS	= 	srcs/init_data.c\
+			srcs/error.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)

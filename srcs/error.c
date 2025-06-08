@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 13:54:20 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/07 13:21:28 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/08 13:50:44 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include <stdio.h>
-# include <stdbool.h>
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
-# include "../libft/libft.h"
-
-typedef struct s_data
+void	print_error(char *str)
 {
+	printf("Error\n");
+	printf("%s\n", str);
+}
 
-}	t_data;
-
-typedef struct s_mlx_data
+void	exit_error(char *str)
 {
-
-}	t_mlx_data;
-
-void	init_data(char *map_name, t_data *data);
-
-// error
-void	print_error(char *str);
-void	exit_error(char *str);
-
-#endif
+	print_error(str);
+	exit(EXIT_FAILURE);
+}

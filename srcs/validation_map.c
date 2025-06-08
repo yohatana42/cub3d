@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   validation_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 13:54:20 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/08 13:52:26 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include <stdio.h>
-# include <stdbool.h>
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
-# include "../libft/libft.h"
-
-typedef struct s_data
+void	validation_map(t_data *data)
 {
-
-}	t_data;
-
-typedef struct s_mlx_data
-{
-
-}	t_mlx_data;
-
-void	init_data(char *map_name, t_data *data);
-
-// error
-void	print_error(char *str);
-void	exit_error(char *str);
-
-#endif
+		/*
+		1. ファイル名が.cub
+		2. 各要素が空白で区切られていること
+		壁のテクスチャが存在すること
+		テクスチャのパスが存在すること
+		テクスチャのフォーマットが正しいこと
+		3. mapが壁で囲われてること
+		4. mapの文字種類が0, 1, NEWSのみ
+	*/
+}
