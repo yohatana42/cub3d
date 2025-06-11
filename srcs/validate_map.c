@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 16:00:14 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:02:11 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@
 void	validate_map(t_line **head)
 {
 	t_line	*curr;
-	// int		map_count;
 
-	map_count = 0;
 	curr = *head;
 	while (curr)
 	{
