@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 14:18:21 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:54:16 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		exit_error("usage: ./cub3d [file name].cub");
 	read_map_file(argv[1], &head);
-	print_line_list(&head);
-	validation_map(&head);
+	validate_map(&head);
 	init_data(&head, &map_data);
 	init_mlx(&mlx_data);
 	draw_init(&mlx_data, &map_data);
 	mlx_event(&mlx_data, &map_data);
 	draw(&mlx_data, &map_data);
+	free_line_list(&head);
 	clean_up(&mlx_data, &map_data);
 	return (EXIT_SUCCESS);
 }

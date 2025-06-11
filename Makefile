@@ -6,7 +6,7 @@ SRCS	= 	srcs/init_data.c\
 			srcs/init_mlx.c\
 			srcs/draw_init.c\
 			srcs/clean_up.c\
-			srcs/validation_map.c\
+			srcs/validate_map.c\
 			srcs/mlx_utils.c\
 			srcs/draw.c\
 			srcs/read_map_file.c\

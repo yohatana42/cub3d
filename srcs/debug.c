@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:29:57 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 13:32:01 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:27:02 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_line_list(t_line **head)
 	temp = *head;
 	while (temp)
 	{
-		printf("line: %s\n", temp->str);
+		printf("line: %s", temp->str);
 		temp = temp->next;
 	}
 }

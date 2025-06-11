@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 14:25:20 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:38:41 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,10 @@ static bool	add_line_list(t_line *node, t_line **head)
 {
 	t_line	*last_node;
 
-	printf("add_line_list\n");
 	if (node == NULL)
 		return (true);
-	// printf("head %p *head %p\n", head, *head);
 	if (*head == NULL)
 	{
-		// printf("*head is NULL\n");
 		*head = node;
 		return (false);
 	}
@@ -101,7 +98,9 @@ void	free_line_list(t_line **head)
 	while (curr)
 	{
 		free(curr->str);
+		curr->str = NULL;
 		temp = curr->next;
 		free(curr);
 	}
+	head = NULL;
 }
