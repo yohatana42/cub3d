@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_map.c                                   :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 14:17:30 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/11 13:29:57 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/11 13:32:01 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-/*
-1. ファイル名が.cub
-2. 各要素が空白で区切られていること
-壁のテクスチャが存在すること
-テクスチャのパスが存在すること
-テクスチャのフォーマットが正しいこと
-3. mapが壁で囲われてること
-4. mapの文字種類が0, 1, NEWSのみ
-*/
-void	validation_map(t_line **head)
+void	print_line_list(t_line **head)
 {
-	(void)head;
+	t_line	*temp;
+
+	temp = *head;
+	while (temp)
+	{
+		printf("line: %s\n", temp->str);
+		temp = temp->next;
+	}
 }
