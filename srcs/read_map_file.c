@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 16:05:21 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:08:31 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	free_line_list(t_line **head)
 	t_line	*curr;
 	t_line	*temp;
 
-	temp = NULL;
 	if (head == NULL)
 		return ;
 	curr = *head;
@@ -102,6 +101,7 @@ void	free_line_list(t_line **head)
 		curr->str = NULL;
 		temp = curr->next;
 		free(curr);
+		curr = temp;
 	}
 	head = NULL;
 }
