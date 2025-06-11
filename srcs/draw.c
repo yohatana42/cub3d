@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 17:50:33 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 14:24:49 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/08 15:34:16 by takitaga          #+#    #+#             */
+/*   Updated: 2025/06/08 15:37:39 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3d.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	draw(t_mlx_data *mlx_data, t_map_data *map_data)
 {
-	if (lst == NULL || f == NULL)
-		return ;
-	while (ft_lstsize(lst))
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	(void)map_data;
+	render_next_frame(mlx_data);
+	mlx_loop(mlx_data->mlx);
 }
