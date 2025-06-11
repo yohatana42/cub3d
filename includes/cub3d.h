@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 14:27:38 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:59:06 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,13 @@ enum
 	ON_DESTROY = 17
 };
 
-
 typedef struct s_line	t_line;
 
 typedef struct s_line
 {
 	char	*str;
 	t_line	*next;
-}
-	t_line;
+}	t_line;
 
 typedef struct s_color
 {
