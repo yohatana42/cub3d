@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 15:13:48 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:29:02 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,32 @@ void	validate_infile_format(t_line **head)
 	t_line	*curr;
 	int		line_count;
 	int		*line_info;
-	int		index;
+	int		i;
+	int		j;
 
 	curr = *head;
-	index = 0;
+	i = 0;
+	j = 0;
 	line_count = count_line_list(head);
 	line_info = get_line_info(head);
-	// 要素が連続していること
-	// 要素が必要以上に存在しないこと
-	// mapが最後に記載されていること
+	while (i < line_count)
+	{
+		if (line_info[i] == texture)
+		{
+			j = i;
+			while (line_info[j] == texture)
+				j++;
+			if (j - i != 4)
+			{
+				free_line_list(head);
+				exit_error("invalid map");
+			}
+		}
+		// 要素が連続していること
+		// 要素が必要以上に存在しないこと
+		// mapが最後に記載されていること
+		i++;
+	}
 }
 
 static int	*get_line_info(t_line **head)
