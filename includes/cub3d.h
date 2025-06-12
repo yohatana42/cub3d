@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 16:31:58 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:11:53 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_line	t_line;
 typedef struct s_line
 {
 	char	*str;
-	int		index;
 	t_line	*next;
 }	t_line;
 

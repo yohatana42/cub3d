@@ -6,13 +6,13 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 16:33:28 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:12:46 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static t_line	*create_line_node(char *str, int index);
+static t_line	*create_line_node(char *str);
 static bool		add_line_list(t_line *node, t_line **head);
 static char		*make_path(char *map_file);
 
@@ -21,9 +21,7 @@ t_line	**read_map_file(char *map_file, t_line **head)
 	int		fd;
 	char	*str;
 	char	*path;
-	int		index;
 
-	index = 0;
 	path = make_path(map_file);
 	fd = open(path, O_RDONLY);
 	free(path);
@@ -32,13 +30,12 @@ t_line	**read_map_file(char *map_file, t_line **head)
 	str = get_next_line(fd);
 	while (str)
 	{
-		if (add_line_list(create_line_node(str, index), head))
+		if (add_line_list(create_line_node(str), head))
 		{
 			free_line_list(head);
 			exit_error("failed: malloc");
 		}
 		str = get_next_line(fd);
-		index++;
 	}
 	close(fd);
 	return (head);
@@ -58,7 +55,7 @@ static char	*make_path(char *map_file)
 	return (path);
 }
 
-static t_line	*create_line_node(char *str, int index)
+static t_line	*create_line_node(char *str)
 {
 	t_line	*node;
 
@@ -66,7 +63,6 @@ static t_line	*create_line_node(char *str, int index)
 	if (!node)
 		return (NULL);
 	node->str = str;
-	node->index = index;
 	node->next = NULL;
 	return (node);
 }
