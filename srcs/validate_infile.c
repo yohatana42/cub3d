@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 13:19:27 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:21:22 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,42 +25,30 @@ static bool	is_map(char *line);
 3. mapが壁で囲われてること
 4. mapの文字種類が0, 1, NEWSのみ
 */
-void	validate_map(t_line **head)
+void	validate_infile(t_line **head)
 {
-	// TODO;validate_infileにするべき
+	validate_infile_format(head);
+	validate_line_format(head);
+}
+
+void	validate_infile_format(t_line **head)
+{
 	t_line	*curr;
-	bool	is_empty;
+	int		texture_count;
+	int		color_count;
+	int		map_count;
 
 	curr = *head;
-	is_empty = true;
-	// validate_infile_format インファイルの要素elementが必要行数あるか確認
+	texture_count = 0;
 	while (curr)
 	{
-		if (ft_strlen(curr->str) == 1 && ft_strcmp("\n", curr->str) == 0)
+		if (is_texture(curr->str))
 		{
-			printf("is empty\n");
-			is_empty = true;
-		}
-		else
-		{
-			if (is_texture(curr->str))
+			while (is_texture(curr->str))
 			{
-				validate_txture_format(curr);
+				texture_count++;
 			}
-			else if (is_roof_floor(curr->str))
-			{
-				printf("is roof floor\n");
-				// 前の行が空白だと確認したい
-				// 2行連続しているか見たい
-			}
-			else if (is_map(curr->str))
-			{
-				printf("is map\n");
-				// これクソデカなのでなんとかしたい
-				// map情報である
-				// これが最後の要素であることを見たい
-				// プレイヤーが存在すること
-			}
+			// 4つ連続して存在する
 		}
 		curr = curr->next;
 	}

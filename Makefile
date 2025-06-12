@@ -1,21 +1,16 @@
 NAME	= cub3d
 MAIN	= srcs/main.c
-<<<<<<< HEAD
-SRCS	= \
-		srcs/error.c\
-		get_next_line/get_next_line_utils.c\
-		get_next_line/get_next_line.c
-=======
 SRCS	= 	srcs/init_data.c\
 			srcs/error.c\
 			srcs/mlx_event.c\
 			srcs/init_mlx.c\
 			srcs/draw_init.c\
 			srcs/clean_up.c\
-			srcs/validation_map.c\
+			srcs/validate_infile.c\
 			srcs/mlx_utils.c\
-			srcs/draw.c
->>>>>>> main
+			srcs/draw.c\
+			get_next_line/get_next_line_utils.c\
+			get_next_line/get_next_line.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -39,11 +34,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-<<<<<<< HEAD
-	$(CC) $(CFLAGS) -o $(NAME) $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a -lXext -lX11 -lm -lz
-=======
 	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
->>>>>>> main
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
