@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 19:22:19 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 13:15:58 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	validate_map(t_line **head)
 
 	curr = *head;
 	is_empty = true;
+	// validate_infile_format インファイルの要素elementが必要行数あるか確認
 	while (curr)
 	{
 		if (ft_strlen(curr->str) == 1 && ft_strcmp("\n", curr->str) == 0)
@@ -58,7 +59,7 @@ void	validate_map(t_line **head)
 				// これクソデカなのでなんとかしたい
 				// map情報である
 				// これが最後の要素であることを見たい
-				// マップだけの
+				// プレイヤーが存在すること
 			}
 		}
 		curr = curr->next;
