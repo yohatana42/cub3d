@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 15:54:16 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:27:55 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	read_map_file(argv[1], &head);
 	validate_map(&head);
 	init_data(&head, &map_data);
+	free_line_list(&head);
 	init_mlx(&mlx_data);
 	draw_init(&mlx_data, &map_data);
 	mlx_event(&mlx_data, &map_data);
