@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_infile_format.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 15:29:02 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/13 19:55:38 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 static int	*get_line_info(t_line **head);
 

@@ -10,7 +10,8 @@ SRCS	= 	srcs/init_data.c\
 			srcs/mlx_utils.c\
 			srcs/draw.c\
 			get_next_line/get_next_line_utils.c\
-			get_next_line/get_next_line.c
+			get_next_line/get_next_line.c\
+			srcs/debug.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -34,7 +35,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
+	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -lft -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@

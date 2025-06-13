@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 14:17:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:27:12 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <stdio.h>
 # include <stdbool.h>
+# include <fcntl.h>
 # include <X11/keysym.h>
+# include <stdlib.h>
 # include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 
@@ -29,6 +30,14 @@ enum
 {
 	ON_DESTROY = 17
 };
+
+typedef struct s_line	t_line;
+
+typedef struct s_line
+{
+	char	*str;
+	t_line	*next;
+}	t_line;
 
 typedef struct s_color
 {
@@ -64,22 +73,28 @@ typedef struct s_mlx_data
 	t_img_data	img;
 }	t_mlx_data;
 
-void	init_data(char *map_name, t_map_data *data);
-void	validate_infile(t_line **head);
-void	clean_up(t_mlx_data *mlx_data, t_map_data *data);
-void	draw_init(t_mlx_data *mlx_data, t_map_data *data);
-void	draw(t_mlx_data *mlx_data, t_map_data *map_data);
-void	init_mlx(t_mlx_data *mlx_data);
-void	mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+t_line		**read_map_file(char *map_file, t_line **head);
+void		validate_map(t_line **head);
+void		init_data(t_line **head, t_map_data *data);
+void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
+void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
+void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
+void		init_mlx(t_mlx_data *mlx_data);
+void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+
+void		free_line_list(t_line **head);
 
 // error
-void	print_error(char *str);
-void	exit_error(char *str);
+void		print_error(char *str);
+void		exit_error(char *str);
 
 // mlx_utils
-void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
-int		render_next_frame(t_mlx_data *mlx_data);
-int		close_window(t_mlx_data *mlx_data);
-int		key_hook(int keycode, t_mlx_data *mlx_data);
+void		my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
+int			render_next_frame(t_mlx_data *mlx_data);
+int			close_window(t_mlx_data *mlx_data);
+int			key_hook(int keycode, t_mlx_data *mlx_data);
+
+// debug
+void		print_line_list(t_line **head);
 
 #endif

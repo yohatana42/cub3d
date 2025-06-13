@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_infile.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 15:13:07 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:26:52 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ int	count_line_list(t_line **head)
 		curr = curr->next;
 	}
 	return (count);
+========
+void	validate_map(t_line **head)
+{
+	t_line	*curr;
+
+	curr = *head;
+	while (curr)
+	{
+		curr = curr->next;
+	}
+>>>>>>>> main:srcs/validate_map.c
 }
