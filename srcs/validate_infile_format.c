@@ -6,23 +6,14 @@
 /*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/13 22:40:28 by yoshiko          ###   ########.fr       */
+/*   Updated: 2025/06/13 22:47:35 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static t_line	*valid_texture_count(t_line *curr, int i, t_line **head);
-static t_line	*valid_color_count(t_line *curr, int i, t_line **head);
-static t_line	*valid_map_count(t_line *curr, int line_count, t_line **head);
+static int	valid_texture_count(t_line *curr, t_line *pre, t_line **head);
 static void	exit_error_infile_format(char *str, t_line **head);
-
-enum	line_type {
-	is_empty,
-	texture,
-	color,
-	map
-};
 
 void	validate_infile_format(t_line **head)
 {
@@ -38,12 +29,18 @@ void	validate_infile_format(t_line **head)
 	{
 		if (is_texture(curr->str))
 			curr = valid_texture_count(curr, pre_line, head);
-		if (is_color(curr->str))
-			curr = valid_color_count(curr, pre_line, head);
-		if (is_map(curr->str))
-			curr = valid_map_count(curr, pre_line, head);
+		// else	if (is_color(curr->str))
+		// 	curr = valid_color_count(curr, pre_line, head);
+		// else	if (is_map(curr->str))
+		// 	curr = valid_map_count(curr, pre_line, head);
 		pre_line = curr;
-		// curr = curr->next;
+		if (ft_strcmp(curr->str, "/n") == 0)
+			curr = curr->next;
+		else if (!is_texture(curr->str) && !is_color(curr->str) && !is_map(curr->str))
+		{
+			free_line_list(head);
+			exit_error("invalid map");
+		}
 	}
 }
 
@@ -73,26 +70,38 @@ static int	valid_texture_count(t_line *curr, t_line *pre, t_line **head)
 	return (curr);
 }
 
-static int	valid_color_count(t_line *curr, int i, t_line **head)
-{
-	int	j;
+// static int	valid_color_count(t_line *curr, int i, t_line **head)
+// {
+// 	int	j;
 
-	j = i;
-	if (i != 0 && line_info[i - 1] != is_empty)
-		exit_error_infile_format("element split empty line", head);
-	while (line_info[j] == color)
-		j++;
-	if (j - i != 2)
-		exit_error_infile_format("color is 2 line", head);
-	i = j;
-	while (line_info[j])
-	{
-		if (line_info[j] == color)
-			exit_error_infile_format("too many color line", head);
-		j++;
-	}
-	return (i);
-}
+// 	j = i;
+// 	if (i != 0 && line_info[i - 1] != is_empty)
+// 		exit_error_infile_format("element split empty line", head);
+// 	while (line_info[j] == color)
+// 		j++;
+// 	if (j - i != 2)
+// 		exit_error_infile_format("color is 2 line", head);
+// 	i = j;
+// 	while (line_info[j])
+// 	{
+// 		if (line_info[j] == color)
+// 			exit_error_infile_format("too many color line", head);
+// 		j++;
+// 	}
+// 	return (i);
+// }
+
+
+// static int	valid_map_count(t_line *curr, int line_count, t_line **head)
+// {
+// 	j = i;
+// 	while (line_info[j] == map)
+// 	j++;
+// 	if (line_count - 1 != j)
+// 	{
+// 		exit_error_infile_format("map is last", head);
+// 	}
+// }
 
 static void	exit_error_infile_format(char *str, t_line **head)
 {
@@ -100,15 +109,4 @@ static void	exit_error_infile_format(char *str, t_line **head)
 	write(2, "Error invalid map: ", 14);
 	write(2, str, ft_strlen(str));
 	exit(1);
-}
-
-static int	valid_map_count(t_line *curr, int line_count, t_line **head)
-{
-	j = i;
-	while (line_info[j] == map)
-		j++;
-	if (line_count - 1 != j)
-	{
-		exit_error_infile_format("map is last", head);
-	}
 }
