@@ -6,7 +6,7 @@
 /*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/13 20:48:45 by yoshiko          ###   ########.fr       */
+/*   Updated: 2025/06/13 22:24:16 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	validate_infile_format(t_line **head)
 	int		line_count;
 	int		*line_info;
 	int		i;
-	int		j;
 
 	curr = *head;
 	i = 0;
@@ -38,43 +37,82 @@ void	validate_infile_format(t_line **head)
 	{
 		if (line_info[i] == texture)
 		{
-			j = i;
-			while (line_info[j] == texture)
-				j++;
-			if (j - i != 4)
-			{
-				free_line_list(head);
-				exit_error("invalid map");
-			}
-			i = j;
+			i = valid_texture_count();
 		}
 		if (line_info[i] == color)
 		{
-			j = i;
-			while (line_info[j] == color)
-				j++;
-			if (j - i != 2)
-			{
-				free_line_list(head);
-				exit_error("invalid map");
-			}
-			i = j;
+			i = valid_color_count();
 		}
 		if (line_info[i] == map)
 		{
-			j = i;
-			while (line_info[j] == map)
-				j++;
-			if (line_count - 1 != j)
-			{
-				free_line_list(head);
-				exit_error("invalid map");
-			}
+			i = valid_map_count();
 		}
 		i++;
 	}
 }
 
+static int	valid_texture_count(t_line *curr, int i, t_line **head)
+{
+	int	j;
+
+	j = i;
+	if (i != 0 && line_info[i - 1] != is_empty)
+		exit_error_infile_format("element split empty line", head);
+	while (line_info[j] == texture)
+		j++;
+	if (j - i != 4)
+		exit_error_infile_format("texture is 4 line", head);
+	i = j;
+	while (line_info[j])
+	{
+		if (line_info[j] == texture)
+			exit_error_infile_format("too many texture line", head);
+		j++;
+	}
+	return (i);
+}
+
+static int	valid_color_count(t_line *curr, int i, t_line **head)
+{
+	int	j;
+
+	j = i;
+	if (i != 0 && line_info[i - 1] != is_empty)
+		exit_error_infile_format("element split empty line", head);
+	while (line_info[j] == color)
+		j++;
+	if (j - i != 2)
+		exit_error_infile_format("color is 2 line", head);
+	i = j;
+	while (line_info[j])
+	{
+		if (line_info[j] == color)
+			exit_error_infile_format("too many color line", head);
+		j++;
+	}
+	return (i);
+}
+
+static void	exit_error_infile_format(char *str, t_line **head)
+{
+	free_line_list(head);
+	write(2, "Error invalid map: ", 14);
+	write(2, str, ft_strlen(str));
+	exit(1);
+}
+
+static int	valid_map_count(t_line *curr, int line_count, t_line **head)
+{
+	j = i;
+	while (line_info[j] == map)
+		j++;
+	if (line_count - 1 != j)
+	{
+		exit_error_infile_format("map is last", head);
+	}
+}
+
+// コレいらない気がする
 static int	*get_line_info(t_line **head)
 {
 	t_line	*curr;
