@@ -6,7 +6,7 @@
 /*   By: yoshiko <yoshiko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/13 19:55:38 by yoshiko          ###   ########.fr       */
+/*   Updated: 2025/06/13 20:48:45 by yoshiko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,31 @@ void	validate_infile_format(t_line **head)
 				free_line_list(head);
 				exit_error("invalid map");
 			}
+			i = j;
 		}
-		// 要素が連続していること
-		// 要素が必要以上に存在しないこと
-		// mapが最後に記載されていること
+		if (line_info[i] == color)
+		{
+			j = i;
+			while (line_info[j] == color)
+				j++;
+			if (j - i != 2)
+			{
+				free_line_list(head);
+				exit_error("invalid map");
+			}
+			i = j;
+		}
+		if (line_info[i] == map)
+		{
+			j = i;
+			while (line_info[j] == map)
+				j++;
+			if (line_count - 1 != j)
+			{
+				free_line_list(head);
+				exit_error("invalid map");
+			}
+		}
 		i++;
 	}
 }
