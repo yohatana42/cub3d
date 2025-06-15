@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 14:17:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:21:25 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define WINDOW_NAME "cub3d"
 # define WIDTH 960
 # define HEIGHT 540
+
+typedef struct s_line	t_line;
 
 enum
 {
@@ -64,13 +66,30 @@ typedef struct s_mlx_data
 	t_img_data	img;
 }	t_mlx_data;
 
-void	init_data(char *map_name, t_map_data *data);
+typedef struct s_line
+{
+	char	*str;
+	t_line	*next;
+}	t_line;
+
+t_line	**read_map_file(char *map_file, t_line **head);
+void	free_line_list(t_line **head);
+void	init_data(t_line **head, t_map_data *data);
 void	validate_infile(t_line **head);
+void	validate_infile_format(t_line **head);
 void	clean_up(t_mlx_data *mlx_data, t_map_data *data);
 void	draw_init(t_mlx_data *mlx_data, t_map_data *data);
 void	draw(t_mlx_data *mlx_data, t_map_data *map_data);
 void	init_mlx(t_mlx_data *mlx_data);
 void	mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+
+// validate infile
+int	count_line_list(t_line **head);
+
+// validate_infile_util
+bool	is_texture(char *line);
+bool	is_color(char *line);
+bool	is_map(char *line);
 
 // error
 void	print_error(char *str);

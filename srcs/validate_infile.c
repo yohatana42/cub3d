@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 15:13:07 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:10:47 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 void	validate_infile(t_line **head)
 {
 	validate_infile_format(head);
-	validate_line_format(head);
+	// validate_line_format(head);
 }
 
 int	count_line_list(t_line **head)
@@ -33,6 +33,7 @@ int	count_line_list(t_line **head)
 	int		count;
 
 	count = 0;
+	curr = *head;
 	while (curr)
 	{
 		count++;
