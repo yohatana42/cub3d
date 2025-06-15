@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/15 16:58:24 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 17:12:02 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ static void		exit_error_infile_format(char *str, t_line **head);
 void	validate_infile_format(t_line **head)
 {
 	t_line	*curr;
-	int		line_count;
 	t_line	*pre_line;
 
 	curr = *head;
 	pre_line = NULL;
-	line_count = count_line_list(head);
 	while (curr)
 	{
 		if (is_texture(curr->str))
@@ -46,10 +44,7 @@ void	validate_infile_format(t_line **head)
 		}
 		pre_line = curr;
 		if (ft_strcmp(curr->str, "\n") == 0)
-		{
-			pre_line = curr;
 			curr = curr->next;
-		}
 		else if (!is_texture(curr->str) && \
 				!is_color(curr->str) && !is_map(curr->str))
 			exit_error_infile_format("", head);
