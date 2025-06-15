@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:08:24 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 15:09:02 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:55:23 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ bool	is_color(char *line)
 {
 	if (ft_strncmp("F", line, 1) == 0 || ft_strncmp("C", line, 1) == 0)
 	{
-		printf("%s", line);
 		return (true);
 	}
 	return (false);
