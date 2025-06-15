@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/15 16:28:05 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/11 13:29:57 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/11 14:27:02 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(t_line **head, t_map_data *map_data)
+void	print_line_list(t_line **head)
 {
-	(void)head;
-	(void)map_data;
+	t_line	*temp;
+
+	temp = *head;
+	while (temp)
+	{
+		printf("line: %s", temp->str);
+		temp = temp->next;
+	}
 }
