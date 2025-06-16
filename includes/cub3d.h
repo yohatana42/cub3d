@@ -6,7 +6,11 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/06/16 17:30:42 by yohatana         ###   ########.fr       */
+=======
+/*   Updated: 2025/06/15 17:14:12 by yohatana         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +30,12 @@
 # define WIDTH 960
 # define HEIGHT 540
 
+typedef struct s_line	t_line;
+
 enum
 {
 	ON_DESTROY = 17
 };
-
-typedef struct s_line	t_line;
 
 typedef struct s_line
 {
