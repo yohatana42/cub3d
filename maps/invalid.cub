@@ -1,4 +1,4 @@
-NO ./textures/test.xpm
+NO ./textures/nonfile
 SO ./textures/test.xpm
 WE ./textures/test.xpm
 EA ./textures/test.xpm
