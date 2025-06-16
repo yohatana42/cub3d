@@ -6,11 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/06/16 17:30:42 by yohatana         ###   ########.fr       */
-=======
-/*   Updated: 2025/06/15 17:14:12 by yohatana         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2025/06/16 20:02:55 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +74,6 @@ typedef struct s_mlx_data
 }	t_mlx_data;
 
 t_line		**read_map_file(char *map_file, t_line **head);
-void		validate_map(t_line **head);
 void		init_data(t_line **head, t_map_data *data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
 void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
@@ -94,6 +89,7 @@ void		validate_line_format(t_line **head);
 
 // validate infile
 int			count_line_list(t_line **head);
+void		exit_error_infile_format(char *str, t_line **head);
 
 // validate_infile_util
 bool		is_texture(char *line);
@@ -111,8 +107,8 @@ int			close_window(t_mlx_data *mlx_data);
 int			key_hook(int keycode, t_mlx_data *mlx_data);
 
 // util
-int	count_double_array(char **str);
-void	free_double_array(char **str);
+int			count_double_array(char **str);
+void		free_double_array(char **str);
 
 // debug
 void		print_line_list(t_line **head);
