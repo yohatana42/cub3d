@@ -6,13 +6,16 @@ SRCS	= 	srcs/init_data.c\
 			srcs/init_mlx.c\
 			srcs/draw_init.c\
 			srcs/clean_up.c\
-			srcs/validate_map.c\
+			srcs/validate_infile.c\
+			srcs/read_map_file.c\
 			srcs/mlx_utils.c\
 			srcs/draw.c\
-			srcs/read_map_file.c\
 			get_next_line/get_next_line_utils.c\
 			get_next_line/get_next_line.c\
-			srcs/debug.c
+			srcs/validate_infile_util.c\
+			srcs/validate_infile_format.c\
+			srcs/debug.c\
+			srcs/validate_line_format.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)

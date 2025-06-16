@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_infile.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 16:02:11 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 17:12:52 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,23 @@
 3. mapが壁で囲われてること
 4. mapの文字種類が0, 1, NEWSのみ
 */
-void	validate_map(t_line **head)
+void	validate_infile(t_line **head)
+{
+	validate_infile_format(head);
+	validate_line_format(head);
+}
+
+int	count_line_list(t_line **head)
 {
 	t_line	*curr;
+	int		count;
 
+	count = 0;
 	curr = *head;
 	while (curr)
 	{
+		count++;
 		curr = curr->next;
 	}
+	return (count);
 }

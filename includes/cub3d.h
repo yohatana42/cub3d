@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/12 14:11:53 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/15 17:14:12 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # define WIDTH 960
 # define HEIGHT 540
 
+typedef struct s_line	t_line;
+
 enum
 {
 	ON_DESTROY = 17
 };
-
-typedef struct s_line	t_line;
 
 typedef struct s_line
 {
@@ -81,8 +81,20 @@ void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
 void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
 void		init_mlx(t_mlx_data *mlx_data);
 void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
-
 void		free_line_list(t_line **head);
+
+// validate
+void		validate_infile(t_line **head);
+void		validate_infile_format(t_line **head);
+void		validate_line_format(t_line **head);
+
+// validate infile
+int			count_line_list(t_line **head);
+
+// validate_infile_util
+bool		is_texture(char *line);
+bool		is_color(char *line);
+bool		is_map(char *line);
 
 // error
 void		print_error(char *str);
