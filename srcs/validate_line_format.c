@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 20:37:11 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:48:21 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	validate_texture(t_line *curr, t_line **head);
 static int	validate_color(t_line *curr, t_line **head);
+static void	validate_rgb_range(char **words, t_line **head);
 static void	validate_map(t_line *curr, t_line **head);
 
 void	validate_line_format(t_line **head)
@@ -21,20 +22,7 @@ void	validate_line_format(t_line **head)
 	t_line	*curr;
 	int		texture_all;
 	int		color_all;
-	// char	**map;
-/*
-	・validate_textture
-	空白区切りであること
-	pathが存在すること
 
-	・validate_color
-	空白区切り
-	数値である
-
-	・validate_map
-	壁で囲まれてること
-	文字種類がただしいか
-*/
 	texture_all = 0;
 	color_all = 0;
 	curr = *head;
@@ -81,7 +69,6 @@ static int	validate_texture(t_line *curr, t_line **head)
 static int	validate_color(t_line *curr, t_line **head)
 {
 	char	**words;
-	// char	**colors;
 	int		res;
 
 	res = 0;
@@ -97,28 +84,35 @@ static int	validate_color(t_line *curr, t_line **head)
 		res = 1;
 	if (ft_strcmp(words[0], "F") == 0)
 		res = 10;
-	// colors = ft_split(words[1], ',');
-	// if (count_double_array(colors) != 3)
-	// {
-	// 	free_double_array(words);
-	// 	free_double_array(colors);
-	// 	exit_error_infile_format("color is 3", head);
-	// }
-	// int	i;
-	// i = 0;
-	// while (colors[i])
-	// {
-	// 	if (255 < ft_atoi(colors[i]) || ft_atoi(colors[i]) < 0)
-	// 	{
-	// 		free_double_array(words);
-	// 		free_double_array(colors);
-	// 		exit_error_infile_format("R,G,B colors in range [0,255]", head);
-	// 	}
-	// 	i++;
-	// }
+	validate_rgb_range(words, head);
 	free_double_array(words);
-	// free_double_array(colors);
 	return (res);
+}
+
+static void	validate_rgb_range(char **words, t_line **head)
+{
+	char	**colors;
+	int		i;
+
+	i = 0;
+	colors = ft_split(words[1], ',');
+	if (count_double_array(colors) != 3)
+	{
+		free_double_array(words);
+		free_double_array(colors);
+		exit_error_infile_format("color is 3", head);
+	}
+	while (colors[i])
+	{
+		if (255 < ft_atoi(colors[i]) || ft_atoi(colors[i]) < 0)
+		{
+			free_double_array(words);
+			free_double_array(colors);
+			exit_error_infile_format("R,G,B colors in range [0,255]", head);
+		}
+		i++;
+	}
+	free_double_array(colors);
 }
 
 static void	validate_map(t_line *curr, t_line **head)
