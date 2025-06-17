@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 12:21:41 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:41:45 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_map_data
 	char	*south_path;
 	char	*west_path;
 	char	*east_path;
-	t_color	*roof;
+	t_color	*ceiling;
 	t_color	*floor;
 }	t_map_data;
 
