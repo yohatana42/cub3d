@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 11:26:05 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:21:41 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		free_line_list(t_line **head);
 void		validate_infile(t_line **head);
 void		validate_infile_format(t_line **head);
 void		validate_line_format(t_line **head);
+void		validate_map(t_line *curr, t_line **head);
 
 // validate infile
 int			count_line_list(t_line **head);
