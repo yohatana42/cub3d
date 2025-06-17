@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 11:29:52 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:33:09 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	validate_line_format(t_line **head)
 			validate_map(curr, head);
 		curr = curr->next;
 	}
-	if (texture_flg != 0b1111 || color_flg != 0b11)
+	if (!(texture_flg & BIT_FLG_1 && texture_flg & BIT_FLG_2 && \
+		texture_flg & BIT_FLG_4 && texture_flg & BIT_FLG_8) || \
+	! (color_flg & BIT_FLG_1 && color_flg & BIT_FLG_2))
 		exit_error_infile_format("duplicate identifier found", head);
 }
 
