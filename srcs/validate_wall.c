@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 14:18:34 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:22:22 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	validate_wall(t_line *curr, t_line **head)
 	while (count_line_map(curr) > i)
 	{
 		map[i] = ft_calloc(sizeof(char), max_len);
-		ft_strlcpy(map[i], curr->str, max_len);
+		ft_strlcpy(map[i], line->str, max_len);
 		printf("i %d map[i] %s\n", i, map[i]);
 		line = line->next;
 		i++;

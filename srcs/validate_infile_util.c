@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:08:24 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 13:31:16 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:21:59 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	get_max_len(t_line *curr)
 	temp = 0;
 	while (line)
 	{
-		temp = ft_strlen(curr->str);
+		temp = ft_strlen(line->str);
 		if (temp > max_len)
 			max_len = temp;
 		line = line->next;
