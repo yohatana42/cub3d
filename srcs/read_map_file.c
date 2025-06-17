@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:37:58 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/15 16:25:17 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:27:25 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 static t_line	*create_line_node(char *str);
 static bool		add_line_list(t_line *node, t_line **head);
-static char		*make_path(char *map_file);
+static void		validate_infile_name(char *map_file);
 
 t_line	**read_map_file(char *map_file, t_line **head)
 {
 	int		fd;
 	char	*str;
-	char	*path;
 
-	path = make_path(map_file);
-	fd = open(path, O_RDONLY);
-	free(path);
+	validate_infile_name(map_file);
+	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 		exit_error("failed: open file");
 	str = get_next_line(fd);
@@ -41,18 +39,13 @@ t_line	**read_map_file(char *map_file, t_line **head)
 	return (head);
 }
 
-static char	*make_path(char *map_file)
+static void	validate_infile_name(char *map_file)
 {
-	char	*path;
 	int		len;
 
 	len = ft_strlen(map_file);
 	if (ft_strcmp(&map_file[len - 4], ".cub"))
 		exit_error("usage: ./cub3d [file name].cub");
-	path = ft_strjoin("maps/", map_file);
-	if (!path)
-		exit_error("failed: malloc");
-	return (path);
 }
 
 static t_line	*create_line_node(char *str)

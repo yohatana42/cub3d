@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 17:03:15 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:15:48 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static t_line	*validate_color_block(t_line *curr, \
 static t_line	*validate_map_block(t_line *curr, \
 										t_line *pre, \
 										t_line **head);
-static void		exit_error_infile_format(char *str, t_line **head);
 
 void	validate_infile_format(t_line **head)
 {
@@ -130,13 +129,4 @@ static t_line	*validate_map_block(t_line *curr, \
 	}
 	curr = watch_line;
 	return (curr);
-}
-
-static void	exit_error_infile_format(char *str, t_line **head)
-{
-	free_line_list(head);
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd("invalid map: ", 2);
-	ft_putendl_fd(str, 2);
-	exit(1);
 }

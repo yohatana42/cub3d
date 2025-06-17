@@ -3,7 +3,7 @@ SO ../textures/book_shell.xpm
 WE ../texture/book_shell.xpm
 EA ../texture/book_shell.xpm
 
-F 255 30 0
+F 255,30,0
 
 
 11111

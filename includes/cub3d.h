@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/15 17:14:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:26:05 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define WINDOW_NAME "cub3d"
 # define WIDTH 960
 # define HEIGHT 540
+# define BIT_FLG_1 1
+# define BIT_FLG_2 2
+# define BIT_FLG_4 4
+# define BIT_FLG_8 8
 
 typedef struct s_line	t_line;
 
@@ -74,7 +78,6 @@ typedef struct s_mlx_data
 }	t_mlx_data;
 
 t_line		**read_map_file(char *map_file, t_line **head);
-void		validate_map(t_line **head);
 void		init_data(t_line **head, t_map_data *data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
 void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
@@ -90,6 +93,7 @@ void		validate_line_format(t_line **head);
 
 // validate infile
 int			count_line_list(t_line **head);
+void		exit_error_infile_format(char *str, t_line **head);
 
 // validate_infile_util
 bool		is_texture(char *line);
@@ -105,6 +109,10 @@ void		my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 int			render_next_frame(t_mlx_data *mlx_data);
 int			close_window(t_mlx_data *mlx_data);
 int			key_hook(int keycode, t_mlx_data *mlx_data);
+
+// util
+int			count_double_array(char **str);
+void		free_double_array(char **str);
 
 // debug
 void		print_line_list(t_line **head);
