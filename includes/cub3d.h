@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 12:41:45 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:06:47 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		validate_infile(t_line **head);
 void		validate_infile_format(t_line **head);
 void		validate_line_format(t_line **head);
 void		validate_map(t_line *curr, t_line **head);
+void		validate_wall(t_line *curr, t_line **head);
 
 // validate infile
 int			count_line_list(t_line **head);
@@ -100,6 +101,7 @@ void		exit_error_infile_format(char *str, t_line **head);
 bool		is_texture(char *line);
 bool		is_color(char *line);
 bool		is_map(char *line);
+int			get_max_len(t_line *curr);
 
 // error
 void		print_error(char *str);

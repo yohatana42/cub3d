@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 12:35:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:09:40 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	validate_line_format(t_line **head)
 		else if (is_color(curr->str))
 			color_flg += validate_color(curr, head);
 		else if (is_map(curr->str))
+		{
 			validate_map(curr, head);
+			break ;
+		}
 		curr = curr->next;
 	}
 	if (!(texture_flg & BIT_FLG_1 && texture_flg & BIT_FLG_2 && \

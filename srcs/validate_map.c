@@ -6,13 +6,12 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:11:43 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 12:55:36 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:06:24 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	get_max_len(t_line *curr);
 static void	replace_space_trim_return(t_line *curr);
 static void	validate_map_char(t_line *curr, t_line **head);
 
@@ -27,31 +26,9 @@ static void	validate_map_char(t_line *curr, t_line **head);
 */
 void	validate_map(t_line *curr, t_line **head)
 {
-	int	max_len;
-
-	max_len = get_max_len(curr);
 	replace_space_trim_return(curr);
 	validate_map_char(curr, head);
-	// validate_wall(curr, head);
-}
-
-static int	get_max_len(t_line *curr)
-{
-	t_line	*line;
-	int		max_len;
-	int		temp;
-
-	line = curr;
-	max_len = 0;
-	temp = 0;
-	while (line)
-	{
-		temp = ft_strlen(curr->str);
-		if (temp > max_len)
-			max_len = temp;
-		line = line->next;
-	}
-	return (max_len);
+	validate_wall(curr, head);
 }
 
 static void	replace_space_trim_return(t_line *curr)
