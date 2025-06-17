@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 20:48:21 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:29:52 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ static void	validate_map(t_line *curr, t_line **head);
 void	validate_line_format(t_line **head)
 {
 	t_line	*curr;
-	int		texture_all;
-	int		color_all;
+	int		texture_flg;
+	int		color_flg;
 
-	texture_all = 0;
-	color_all = 0;
+	texture_flg = 0;
+	color_flg = 0;
 	curr = *head;
 	while (curr)
 	{
 		if (is_texture(curr->str))
-			texture_all += validate_texture(curr, head);
+			texture_flg += validate_texture(curr, head);
 		if (is_color(curr->str))
-			color_all += validate_color(curr, head);
+			color_flg += validate_color(curr, head);
 		if (is_map(curr->str))
 			validate_map(curr, head);
 		curr = curr->next;
 	}
-	if (texture_all != 1111 || color_all != 11)
+	if (texture_flg != 0b1111 || color_flg != 0b11)
 		exit_error_infile_format("duplicate identifier found", head);
 }
 
@@ -55,13 +55,13 @@ static int	validate_texture(t_line *curr, t_line **head)
 		exit_error_infile_format("separate elements with space", head);
 	}
 	if (ft_strcmp(path[0], "NO") == 0)
-		res = 1;
+		res = BIT_FLG_1;
 	else if (ft_strcmp(path[0], "SO") == 0)
-		res = 10;
+		res = BIT_FLG_2;
 	else if (ft_strcmp(path[0], "EA") == 0)
-		res = 100;
+		res = BIT_FLG_4;
 	else if (ft_strcmp(path[0], "WE") == 0)
-		res = 1000;
+		res = BIT_FLG_8;
 	free_double_array(path);
 	return (res);
 }
@@ -81,9 +81,9 @@ static int	validate_color(t_line *curr, t_line **head)
 		exit_error_infile_format("separate elements with space", head);
 	}
 	if (ft_strcmp(words[0], "C") == 0)
-		res = 1;
+		res = BIT_FLG_1;
 	if (ft_strcmp(words[0], "F") == 0)
-		res = 10;
+		res = BIT_FLG_2;
 	validate_rgb_range(words, head);
 	free_double_array(words);
 	return (res);

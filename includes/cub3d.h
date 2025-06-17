@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 20:02:55 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:26:05 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define WINDOW_NAME "cub3d"
 # define WIDTH 960
 # define HEIGHT 540
+# define BIT_FLG_1 1
+# define BIT_FLG_2 2
+# define BIT_FLG_4 4
+# define BIT_FLG_8 8
 
 typedef struct s_line	t_line;
 
