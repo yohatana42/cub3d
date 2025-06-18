@@ -6,14 +6,14 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 15:09:57 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:04:31 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static char	**create_map_array(t_line *curr, t_line **head);
-static int	count_line_map(t_line *curr);
+// static int	count_line_map(t_line *curr);
 static void	copy_array(char *map, char *str, int max_len);
 static void	search_player(char **map, t_line **head);
 
@@ -76,7 +76,7 @@ static void	copy_array(char *map, char *str, int max_len)
 	map[max_len] = '\0';
 }
 
-static int	count_line_map(t_line *curr)
+int	count_line_map(t_line *curr)
 {
 	t_line	*line;
 	int		i;

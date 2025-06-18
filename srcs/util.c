@@ -1,43 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_infile.c                                  :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 16:05:45 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/18 16:05:23 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/18 16:06:32 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	validate_infile(t_line **head)
+int	count_double_array(char **str)
 {
-	validate_infile_format(head);
-	validate_line_format(head);
-}
+	int	i;
 
-int	count_line_list(t_line **head)
-{
-	t_line	*curr;
-	int		count;
-
-	count = 0;
-	curr = *head;
-	while (curr)
+	i = 0;
+	while (str[i])
 	{
-		count++;
-		curr = curr->next;
+		i++;
 	}
-	return (count);
+	return (i);
 }
 
-void	exit_error_infile_format(char *str, t_line **head)
+void	free_double_array(char **str)
 {
-	free_line_list(head);
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd("invalid map: ", 2);
-	ft_putendl_fd(str, 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	free_double_array_int(int **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

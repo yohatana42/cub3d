@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 15:10:22 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:21:08 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define BIT_FLG_2 2
 # define BIT_FLG_4 4
 # define BIT_FLG_8 8
+# define SPACE '0'
+# define WALL '1'
 
 typedef struct s_line	t_line;
 
@@ -77,6 +79,12 @@ typedef struct s_mlx_data
 	t_img_data	img;
 }	t_mlx_data;
 
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_position;
+
 t_line		**read_map_file(char *map_file, t_line **head);
 void		init_data(t_line **head, t_map_data *data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
@@ -93,6 +101,7 @@ void		validate_line_format(t_line **head);
 void		validate_map(t_line *curr, t_line **head);
 void		validate_wall(t_line *curr, t_line **head);
 void		search_wall(char **map, t_line *curr, t_line **head);
+void		dfs(int **search_map, char **map, t_line **head, t_line *curr);
 
 // validate infile
 int			count_line_list(t_line **head);
@@ -104,6 +113,7 @@ bool		is_color(char *line);
 bool		is_map(char *line);
 int			get_max_len(t_line *curr);
 bool		is_player(char c);
+int			count_line_map(t_line *curr);
 
 // error
 void		print_error(char *str);
@@ -118,6 +128,7 @@ int			key_hook(int keycode, t_mlx_data *mlx_data);
 // util
 int			count_double_array(char **str);
 void		free_double_array(char **str);
+void		free_double_array_int(int **array);
 
 // debug
 void		print_line_list(t_line **head);
