@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:40:12 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 19:32:39 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:48:36 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ static int	dfs_exec(int **search_map, \
 	int			status_u;
 	int			status_d;
 
+	printf("dfs_exec\n");
+	printf("now.x %d now.y %d\n", now.x, now.y);
+	printf("start.x %d start.y %d\n", start.x, start.y);
+
 	if (now.x < 0 || (int)ft_strlen(map[0]) < now.x \
 	|| now.y < 0 || count_double_array(map) < now.y)
 		return (0);
@@ -78,8 +82,10 @@ static t_position	get_start(char **map)
 	t_position	start;
 	int			i;
 	int			j;
+	bool		break_flg;
 
 	i = 0;
+	break_flg = false;
 	while (map[i])
 	{
 		j = 0;
@@ -87,11 +93,16 @@ static t_position	get_start(char **map)
 		{
 			if (map[i][j] == WALL)
 			{
+				printf("i %d j %d\n", i, j);
 				start.x = j;
 				start.y = i;
+				break_flg = true;
+				break ;
 			}
 			j++;
 		}
+		if (break_flg)
+			break ;
 		i++;
 	}
 	return (start);
