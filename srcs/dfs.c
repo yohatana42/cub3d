@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:40:12 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 19:48:36 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 20:04:17 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,26 @@ static int	dfs_exec(int **search_map, \
 	printf("dfs_exec\n");
 	printf("now.x %d now.y %d\n", now.x, now.y);
 	printf("start.x %d start.y %d\n", start.x, start.y);
-
 	if (now.x < 0 || (int)ft_strlen(map[0]) < now.x \
 	|| now.y < 0 || count_double_array(map) < now.y)
+	{
+		printf("segumentation fault\n");
 		return (0);
-	if (search_map[now.y][now.x] == 1 && (now.x != start.x && now.y != start.y))
+	}
+	printf("aaa\n");
+	printf("search_map %d\n", search_map[now.y][now.x]);// こいつが悪い
+	if (search_map[now.y][now.x] == 1 && now.x != start.x && now.y != start.y)
+	{
+		printf("already search\n");
 		return (0);
+	}
+	printf("bbb\n");
 	if (now.x == start.x && now.y == start.y && search_map[now.y][now.x] == 1)
+	{
+		printf("start get\n");
 		return (1);
+	}
+	printf("ccc\n");
 	right.x = now.x + 1;
 	right.y = now.y;
 	left.x = now.x - 1;
@@ -93,7 +105,6 @@ static t_position	get_start(char **map)
 		{
 			if (map[i][j] == WALL)
 			{
-				printf("i %d j %d\n", i, j);
 				start.x = j;
 				start.y = i;
 				break_flg = true;
