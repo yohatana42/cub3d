@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 15:20:44 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:09:57 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char	**create_map_array(t_line *curr, t_line **head);
 static int	count_line_map(t_line *curr);
 static void	copy_array(char *map, char *str, int max_len);
+static void	search_player(char **map, t_line **head);
 
 void	validate_wall(t_line *curr, t_line **head)
 {
@@ -23,6 +24,8 @@ void	validate_wall(t_line *curr, t_line **head)
 
 	line = curr;
 	map = create_map_array(curr, head);
+	search_player(map, head);
+	search_wall(map, curr, head);
 	free_double_array(map);
 }
 
@@ -48,7 +51,6 @@ static char	**create_map_array(t_line *curr, t_line **head)
 			exit_error_infile_format("failed: malloc", head);
 		}
 		copy_array(map[i], line->str, max_len);
-		printf("map[i] %s\n", map[i]);
 		line = line->next;
 		i++;
 	}
@@ -88,4 +90,33 @@ static int	count_line_map(t_line *curr)
 		line = line->next;
 	}
 	return (i);
+}
+
+static void	search_player(char **map, t_line **head)
+{
+	int		i;
+	int		j;
+	bool	exist_flg;
+
+	i = 0;
+	exist_flg = false;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (is_player(map[i][j]))
+			{
+				if (exist_flg)
+				{
+					free_double_array(map);
+					exit_error_infile_format(\
+						"only 1 player is allowed in the map", head);
+				}
+				exist_flg = true;
+			}
+			j++;
+		}
+		i++;
+	}
 }

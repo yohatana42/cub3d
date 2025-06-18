@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:08:24 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 14:21:59 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:07:11 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ int	get_max_len(t_line *curr)
 		line = line->next;
 	}
 	return (max_len);
+}
+
+bool	is_player(char c)
+{
+	if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
+		return (true);
+	return (false);
 }
