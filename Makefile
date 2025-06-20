@@ -12,6 +12,8 @@ SRCS	= 	srcs/init_data.c\
 			srcs/draw.c\
 			srcs/ray_casting/ray_casting.c\
 			srcs/ray_casting/calculation_utils.c\
+			srcs/keyhook_utils/arrow.c\
+			srcs/keyhook_utils/wasd.c\
 			get_next_line/get_next_line_utils.c\
 			get_next_line/get_next_line.c\
 			srcs/validate_infile_util.c\

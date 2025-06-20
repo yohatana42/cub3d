@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 15:08:04 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:24:52 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ int	close_window(t_mlx_data *mlx_data)
 
 int	key_hook(int keycode, t_mlx_data *mlx_data)
 {
-	if (keycode == XK_Escape)
-		close_window(mlx_data);
-	if (keycode == XK_w)
-		mlx_data->ray->pos.x -= 0.1;
+    if (keycode == XK_Escape)
+        close_window(mlx_data);
+    if (keycode == XK_w)
+		move_forward(mlx_data->ray);
 	if (keycode == XK_s)
-		mlx_data->ray->pos.x += 0.1;
-	if (keycode == XK_a)
-		mlx_data->ray->pos.y -= 0.1;
-	if (keycode == XK_d)
-		mlx_data->ray->pos.y += 0.1;
-	printf("KEY: %f, %f\n", mlx_data->ray->pos.x, mlx_data->ray->pos.y);
-	render_next_frame(mlx_data, NULL);
-	return (0);
+		move_backward(mlx_data->ray);
+    if (keycode == XK_a)
+		move_left(mlx_data->ray);
+    if (keycode == XK_d)
+		move_right(mlx_data->ray);
+    if (keycode == XK_Right)
+		rotate_right(mlx_data->ray);
+    if (keycode == XK_Left)
+		rotate_left(mlx_data->ray);
+    render_next_frame(mlx_data, NULL);
+    return (0);
 }
