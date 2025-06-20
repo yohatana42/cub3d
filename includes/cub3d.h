@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 21:07:38 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:29:46 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ typedef struct s_mlx_data
 	void		*mlx;
 	void		*win;
 	t_img_data	img;
-	t_ray_data	ray;
-	t_map_data	map_data;
+	t_ray_data	*ray;
+	t_map_data	*map_data;
 }	t_mlx_data;
 
 typedef struct s_maps
@@ -139,7 +139,6 @@ bool		is_map(char *line);
 int			get_max_len(t_line *curr);
 bool		is_player(char c);
 int			count_line_map(t_line *curr);
-// void		search_player(char **map, t_line **head);
 
 // error
 void		print_error(char *str);
