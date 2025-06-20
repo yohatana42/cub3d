@@ -64,4 +64,7 @@ re: fclean all
 norm:
 	norminette srcs/* includes/*
 
-.PHONY: all clean fclean re
+valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/test.cub
+
+.PHONY: all clean fclean re norm valgrind
