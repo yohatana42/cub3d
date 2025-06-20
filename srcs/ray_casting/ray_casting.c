@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:02:25 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 19:59:37 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:19:56 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,21 @@ static void	draw_wall_line(t_mlx_data *mlx_data, int x, t_ray_data *ray)
 		draw_start = 0;
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
+	y = 0;
+	while (y < draw_start)
+	{
+		my_mlx_pixel_put(&mlx_data->img, x, y, 0xFFFFFF);
+		y++;
+	}
 	y = draw_start;
 	while (y <= draw_end)
 	{
 		my_mlx_pixel_put(&mlx_data->img, x, y, get_color(ray->side));
+		y++;
+	}
+	while (y < HEIGHT - 1)
+	{
+		my_mlx_pixel_put(&mlx_data->img, x, y, 0xFFFFFF);
 		y++;
 	}
 }
