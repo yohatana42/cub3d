@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:34:16 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 19:59:28 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:04:59 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_ray_data(t_ray_data *ray)
 
 void	draw(t_mlx_data *mlx_data, t_map_data *map_data)
 {
-	init_ray_data(&mlx_data->ray);
+	init_ray_data(mlx_data->ray);
 	render_next_frame(mlx_data, map_data);
 	mlx_loop(mlx_data->mlx);
 }

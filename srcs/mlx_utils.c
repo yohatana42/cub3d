@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 20:54:38 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:08:04 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	close_window(t_mlx_data *mlx_data)
 	mlx_destroy_window(mlx_data->mlx, mlx_data->win);
 	mlx_destroy_display(mlx_data->mlx);
 	free(mlx_data->mlx);
+	free(mlx_data->ray);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
@@ -50,22 +51,14 @@ int	key_hook(int keycode, t_mlx_data *mlx_data)
 	if (keycode == XK_Escape)
 		close_window(mlx_data);
 	if (keycode == XK_w)
-	{
-		mlx_data->ray.pos.x -= 0.1;
-	}
+		mlx_data->ray->pos.x -= 0.1;
 	if (keycode == XK_s)
-	{
-		mlx_data->ray.pos.x += 0.1;
-	}
+		mlx_data->ray->pos.x += 0.1;
 	if (keycode == XK_a)
-	{
-		mlx_data->ray.pos.y -= 0.1;
-	}
+		mlx_data->ray->pos.y -= 0.1;
 	if (keycode == XK_d)
-	{
-		mlx_data->ray.pos.y += 0.1;
-	}
-	printf("KEY: %f, %f\n", mlx_data->ray.pos.x, mlx_data->ray.pos.y);
+		mlx_data->ray->pos.y += 0.1;
+	printf("KEY: %f, %f\n", mlx_data->ray->pos.x, mlx_data->ray->pos.y);
 	render_next_frame(mlx_data, NULL);
 	return (0);
 }
