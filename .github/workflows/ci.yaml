@@ -20,5 +20,9 @@ jobs:
               norminette srcs/*.c includes/*.h
         - name: make
           run: make
+        - name: valgrind
+          run: |
+              sudo apt install valgrind
+              valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./cub3d maps/test.cub
         - name: clean_up
           run: make fclean

@@ -6,14 +6,14 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:40:12 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 19:45:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:37:06 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static int			dfs_exec(t_maps *maps,
-						int x, \
+						int x,
 						int y);
 static int			get_player_position_x(char **map);
 static int			get_player_position_y(char **map);
