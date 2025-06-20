@@ -62,7 +62,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette srcs/* includes/*
+	norminette srcs includes
 
 valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/test.cub
