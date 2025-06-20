@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 17:35:13 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 19:36:43 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,6 @@ typedef struct s_mlx_data
 	t_img_data	img;
 }	t_mlx_data;
 
-typedef struct s_position
-{
-	int	x;
-	int	y;
-}	t_position;
-
 typedef struct s_maps
 {
 	char	**map;
@@ -107,8 +101,9 @@ void		validate_line_format(t_line **head);
 void		validate_map(t_line *curr, t_line **head);
 void		validate_wall(t_line *curr, t_line **head);
 void		search_wall(char **map, t_line *curr, t_line **head);
-// void		dfs(int **search_map, char **map, t_line **head, t_line *curr);
-void	dfs(t_maps *maps, t_line **head, t_line *curr);
+
+// dfs
+void		dfs(t_maps *maps, t_line **head, t_line *curr);
 
 // validate infile
 int			count_line_list(t_line **head);
@@ -121,6 +116,7 @@ bool		is_map(char *line);
 int			get_max_len(t_line *curr);
 bool		is_player(char c);
 int			count_line_map(t_line *curr);
+// void		search_player(char **map, t_line **head);
 
 // error
 void		print_error(char *str);
@@ -135,8 +131,7 @@ int			key_hook(int keycode, t_mlx_data *mlx_data);
 // util
 int			count_double_array(char **str);
 void		free_double_array(char **str);
-// void		free_double_array_int(int **array);
-void	free_double_array_int(int **array, int i_max);
+void		free_double_array_int(int **array, int i_max);
 
 // debug
 void		print_line_list(t_line **head);

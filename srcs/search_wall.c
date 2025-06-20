@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:09:07 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 17:35:09 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 18:19:04 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	search_wall(char **map, t_line *curr, t_line **head)
 	maps.search_map = create_serch_map(curr, head, map);
 	maps.map = map;
 	dfs(&maps, head, curr);
+	free_double_array_int(maps.search_map, count_line_map(curr));
 }
 
 static int	**create_serch_map(t_line *curr, t_line **head, char **map)
