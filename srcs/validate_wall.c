@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 19:36:50 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:42:07 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ static void	search_player(char **map, t_line **head);
 void	validate_wall(t_line *curr, t_line **head)
 {
 	char	**map;
-	t_line	*line;
 
-	line = curr;
 	map = create_map_array(curr, head);
 	search_player(map, head);
 	search_wall(map, curr, head);
