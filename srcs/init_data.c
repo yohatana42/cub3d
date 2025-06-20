@@ -6,14 +6,34 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/15 16:28:05 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:24:43 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_data(t_line **head, t_map_data *map_data)
+void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
 {
-	(void)head;
-	(void)map_data;
+	t_line	*line;
+
+	line = *head;
+	while (line)
+	{
+		if (is_texture(line))
+		{
+			set_texture(line, map_data);
+		}
+		if (is_color(line))
+		{
+			set_color(line, map_data);
+		}
+		if (is_map(line))
+		{
+			set_map(line, map_data);
+		}
+		line = line->next;
+	}
+	mlx_data->map_data = map_data;
 }
+
+static void	set_texture(t_line *line, )
