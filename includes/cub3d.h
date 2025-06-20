@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 21:14:17 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:30:34 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ typedef struct s_mlx_data
 	void		*mlx;
 	void		*win;
 	t_img_data	img;
-	t_ray_data	ray;
-	t_map_data	map_data;
+	t_ray_data	*ray;
+	t_map_data	*map_data;
 }	t_mlx_data;
 
 t_line		**read_map_file(char *map_file, t_line **head);
