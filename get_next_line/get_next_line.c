@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 {
 	static t_string	string;
 	t_string		*string_p;
-	char			read_char;
+	int			read_char;
 
 	if (fd < 0)
 		return (NULL);

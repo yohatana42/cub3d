@@ -10,6 +10,8 @@ SRCS	= 	srcs/init_data.c\
 			srcs/read_map_file.c\
 			srcs/mlx_utils.c\
 			srcs/draw.c\
+			srcs/ray_casting/ray_casting.c\
+			srcs/ray_casting/calculation_utils.c\
 			get_next_line/get_next_line_utils.c\
 			get_next_line/get_next_line.c\
 			srcs/validate_infile_util.c\
@@ -57,6 +59,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette srcs/*.c includes/*.h
+	norminette srcs/ includes/
 
 .PHONY: all clean fclean re

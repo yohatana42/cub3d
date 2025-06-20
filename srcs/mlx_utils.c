@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/08 16:01:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:54:38 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	render_next_frame(t_mlx_data *mlx_data)
+int	render_next_frame(t_mlx_data *mlx_data, t_map_data *map_data)
 {
+	ray_casting(mlx_data, map_data);
 	mlx_put_image_to_window(
 		mlx_data->mlx,
 		mlx_data->win,
@@ -48,6 +49,23 @@ int	key_hook(int keycode, t_mlx_data *mlx_data)
 {
 	if (keycode == XK_Escape)
 		close_window(mlx_data);
-	render_next_frame(mlx_data);
+	if (keycode == XK_w)
+	{
+		mlx_data->ray.pos.x -= 0.1;
+	}
+	if (keycode == XK_s)
+	{
+		mlx_data->ray.pos.x += 0.1;
+	}
+	if (keycode == XK_a)
+	{
+		mlx_data->ray.pos.y -= 0.1;
+	}
+	if (keycode == XK_d)
+	{
+		mlx_data->ray.pos.y += 0.1;
+	}
+	printf("KEY: %f, %f\n", mlx_data->ray.pos.x, mlx_data->ray.pos.y);
+	render_next_frame(mlx_data, NULL);
 	return (0);
 }

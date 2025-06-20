@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 20:58:10 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:09:03 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
+# include <math.h>
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
@@ -105,6 +106,7 @@ void		init_data(t_line **head, t_map_data *data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
 void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
 void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
+void		ray_casting(t_mlx_data *mlx_data, t_map_data *map_data);
 void		init_mlx(t_mlx_data *mlx_data);
 void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
 void		free_line_list(t_line **head);
@@ -129,13 +131,20 @@ void		exit_error(char *str);
 
 // mlx_utils
 void		my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
-int			render_next_frame(t_mlx_data *mlx_data);
+int			render_next_frame(t_mlx_data *mlx_data, t_map_data *map_data);
 int			close_window(t_mlx_data *mlx_data);
 int			key_hook(int keycode, t_mlx_data *mlx_data);
 
 // util
 int			count_double_array(char **str);
 void		free_double_array(char **str);
+
+// ray_casting calulation utils
+void		calculate_ray_direction(t_ray_data *ray);
+void		calculate_delta_distances(t_ray_data *ray);
+void		calculate_step_and_side_dist(t_ray_data *ray);
+void		calculate_wall_distance(t_ray_data *ray);
+void		perform_dda(t_ray_data *ray, int world_map[8][8]);
 
 // debug
 void		print_line_list(t_line **head);
