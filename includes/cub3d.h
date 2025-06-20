@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 19:21:08 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:41:23 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ typedef struct s_position
 	int	y;
 }	t_position;
 
+typedef struct s_maps
+{
+	char	**map;
+	int		**search_map;
+}	t_maps;
+
 t_line		**read_map_file(char *map_file, t_line **head);
 void		init_data(t_line **head, t_map_data *data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
@@ -101,7 +107,8 @@ void		validate_line_format(t_line **head);
 void		validate_map(t_line *curr, t_line **head);
 void		validate_wall(t_line *curr, t_line **head);
 void		search_wall(char **map, t_line *curr, t_line **head);
-void		dfs(int **search_map, char **map, t_line **head, t_line *curr);
+// void		dfs(int **search_map, char **map, t_line **head, t_line *curr);
+void	dfs(t_maps *maps, t_line **head, t_line *curr);
 
 // validate infile
 int			count_line_list(t_line **head);

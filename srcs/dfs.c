@@ -6,87 +6,81 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:40:12 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 20:04:17 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:07:50 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static t_position	get_start(char **map);
-static int			dfs_exec(int **search_map, \
-					char **map, \
-					t_position now, \
-					t_position start);
+static int			dfs_exec(t_maps *maps,
+						int x, \
+						int y, \
+						t_position start);
+static int			dfs_exec_helper(t_maps *maps,
+						int x, \
+						int y, \
+						t_position start);
 
-void	dfs(int **search_map, char **map, t_line **head, t_line *curr)
+void	dfs(t_maps *maps, t_line **head, t_line *curr)
 {
 	t_position	start;
 	t_position	now;
 
-	(void)curr;
 	printf("dfs\n");
-	start = get_start(map);
-	now = get_start(map);
-	if (dfs_exec(search_map, map, now, start) == 0)
+
+	(void)curr;
+	start = get_start(maps->map);
+	now = get_start(maps->map);
+	if (dfs_exec(maps, now.x, now.y, start) == 0)
 	{
 		exit_error_infile_format("map must allowed '1'", head);
 	}
 }
 
-static int	dfs_exec(int **search_map, \
-					char **map, \
-					t_position now, \
+static int	dfs_exec(t_maps *maps,
+					int x, \
+					int y, \
 					t_position start)
 {
-	t_position	right;
-	t_position	left;
-	t_position	up;
-	t_position	down;
+	int			status;
+
+	printf("x %d y %d\n", x, y);
+	if (maps->search_map[y][x] == 1)
+		return (0);
+	if (x == start.x && y == start.y && maps->search_map[y][x] == 1)
+		return (1);
+	maps->search_map[y][x] = 1;
+	if (x < 0 || (int)ft_strlen(maps->map[0]) - 1 < x \
+		|| y < 0 || count_double_array(maps->map) - 1 < y)
+		return (0);
+	if (maps->map[y][x] == SPACE)
+		return (0);
+	status = dfs_exec_helper(maps, x, y, start);
+	if (status == 0)
+		return (0);
+	else
+		return (1);
+}
+
+static int	dfs_exec_helper(t_maps *maps,
+					int x, \
+					int y, \
+					t_position start)
+{
 	int			status_r;
 	int			status_l;
 	int			status_u;
 	int			status_d;
 
-	printf("dfs_exec\n");
-	printf("now.x %d now.y %d\n", now.x, now.y);
-	printf("start.x %d start.y %d\n", start.x, start.y);
-	if (now.x < 0 || (int)ft_strlen(map[0]) < now.x \
-	|| now.y < 0 || count_double_array(map) < now.y)
-	{
-		printf("segumentation fault\n");
-		return (0);
-	}
-	printf("aaa\n");
-	printf("search_map %d\n", search_map[now.y][now.x]);// こいつが悪い
-	if (search_map[now.y][now.x] == 1 && now.x != start.x && now.y != start.y)
-	{
-		printf("already search\n");
-		return (0);
-	}
-	printf("bbb\n");
-	if (now.x == start.x && now.y == start.y && search_map[now.y][now.x] == 1)
-	{
-		printf("start get\n");
+	status_r = dfs_exec(maps, x + 1, y, start);
+	status_l = dfs_exec(maps, x -1, y, start);
+	status_u = dfs_exec(maps, x, y +1, start);
+	status_d = dfs_exec(maps, x, y -1, start);
+	if (status_r == 1 || status_l == 1 || status_u == 1 || status_d == 1)
 		return (1);
-	}
-	printf("ccc\n");
-	right.x = now.x + 1;
-	right.y = now.y;
-	left.x = now.x - 1;
-	left.y = now.y;
-	up.x = now.x;
-	up.y = now.y + 1;
-	down.x = now.x;
-	down.y = now.y - 1;
-	search_map[now.y][now.x] = 1;
-	status_r = dfs_exec(search_map, map, right, start);
-	status_l = dfs_exec(search_map, map, left, start);
-	status_u = dfs_exec(search_map, map, up, start);
-	status_d = dfs_exec(search_map, map, down, start);
-	if (status_r == 0 && status_l == 0 && status_u == 0 && status_d == 0)
-		return (0);
 	else
-		return (1);
+		return (0);
 }
 
 static t_position	get_start(char **map)

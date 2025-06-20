@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:09:07 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 19:59:17 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:48:53 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,29 @@ static int	**create_serch_map(t_line *curr, t_line **head, char **map);
 
 void	search_wall(char **map, t_line *curr, t_line **head)
 {
-	int	**search_map;
+	// int		**search_map;
+	t_maps	maps;
 
-	search_map = create_serch_map(curr, head, map);
+	maps.search_map = create_serch_map(curr, head, map);
+	maps.map = map;
 	// seach_map
-	dfs(search_map, map, head, curr);
+	// === print serch_map ===
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < count_line_map(curr))
+	{
+		j = 0;
+		while (j < get_max_len(curr))
+		{
+			printf("%d\n", maps.search_map[i][j]);
+			j++;
+		}
+		i++;
+	}
+	// =================
+	dfs(&maps, head, curr);
 }
 
 static int	**create_serch_map(t_line *curr, t_line **head, char **map)
@@ -34,10 +52,12 @@ static int	**create_serch_map(t_line *curr, t_line **head, char **map)
 		free_double_array(map);
 		exit_error_infile_format("failed: malloc", head);
 	}
+	printf("search_map %p\n", search_map);
 	i = 0;
-	while (i)
+	while (i < count_line_map(curr))
 	{
 		search_map[i] = ft_calloc(sizeof(int), get_max_len(curr));
+		printf("i %d search_map[i] %p\n", i, search_map[i]);
 		if (!search_map[i])
 		{
 			free_double_array(map);
