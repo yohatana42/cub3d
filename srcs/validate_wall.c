@@ -6,14 +6,13 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 20:42:07 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:00:56 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static char	**create_map_array(t_line *curr, t_line **head);
-// static int	count_line_map(t_line *curr);
 static void	copy_array(char *map, char *str, int max_len);
 static void	search_player(char **map, t_line **head);
 
@@ -94,27 +93,25 @@ static void	search_player(char **map, t_line **head)
 {
 	int		i;
 	int		j;
-	bool	exist_flg;
+	int		count;
 
 	i = 0;
-	exist_flg = false;
+	count = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
 			if (is_player(map[i][j]))
-			{
-				if (exist_flg)
-				{
-					free_double_array(map);
-					exit_error_infile_format(\
-						"only 1 player is allowed in the map", head);
-				}
-				exist_flg = true;
-			}
+				count++;
 			j++;
 		}
 		i++;
+	}
+	if (count != 1)
+	{
+		free_double_array(map);
+		exit_error_infile_format(\
+			"map must contain exactly one player", head);
 	}
 }
