@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 15:23:44 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:38:56 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,15 @@ void		calculate_delta_distances(t_ray_data *ray);
 void		calculate_step_and_side_dist(t_ray_data *ray);
 void		calculate_wall_distance(t_ray_data *ray);
 void		perform_dda(t_ray_data *ray, int world_map[8][8]);
+
+// ray_casting draw utils
+void		draw_roof(t_mlx_data *mlx_data, int x, int draw_start);
+void		draw_floor(t_mlx_data *mlx_data, int x, int draw_end);
+void		draw_wall(
+				t_mlx_data *mlx_data,
+				int x,
+				int draw_start,
+				int draw_end);
 
 // keyhook_utils
 void		move_forward(t_ray_data *ray);

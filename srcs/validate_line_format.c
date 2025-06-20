@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_line_format.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 11:33:09 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:30:43 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	validate_line_format(t_line **head)
 			validate_map(curr, head);
 		curr = curr->next;
 	}
-	if (!(texture_flg & BIT_FLG_1 && texture_flg & BIT_FLG_2 && \
-		texture_flg & BIT_FLG_4 && texture_flg & BIT_FLG_8) || \
-	! (color_flg & BIT_FLG_1 && color_flg & BIT_FLG_2))
+	if (!(texture_flg & BIT_FLG_1 && texture_flg & BIT_FLG_2
+			&& texture_flg & BIT_FLG_4 && texture_flg & BIT_FLG_8)
+		|| !(color_flg & BIT_FLG_1 && color_flg & BIT_FLG_2))
 		exit_error_infile_format("duplicate identifier found", head);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_infile_util.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:08:24 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 19:08:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:26:50 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 bool	is_texture(char *line)
 {
-	if (ft_strncmp("NO", line, 2) == 0 || \
-		ft_strncmp("SO", line, 2) == 0 || \
-		ft_strncmp("EA", line, 2) == 0 || \
-		ft_strncmp("WE", line, 2) == 0)
+	if (ft_strncmp("NO", line, 2) == 0
+		|| ft_strncmp("SO", line, 2) == 0
+		|| ft_strncmp("EA", line, 2) == 0
+		|| ft_strncmp("WE", line, 2) == 0)
 	{
 		return (true);
 	}
