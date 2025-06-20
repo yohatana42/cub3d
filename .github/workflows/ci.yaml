@@ -23,6 +23,6 @@ jobs:
         - name: valgrind
           run: |
               sudo apt install valgrind
-              valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./cub3d maps/test.cub
+              xvfb-run -a valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./cub3d maps/test.cub
         - name: clean_up
           run: make fclean
