@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 11:26:05 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:58:10 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ typedef struct s_color
 	int	blue;
 }	t_color;
 
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+}	t_vec;
+
+typedef struct s_ray_data
+{
+	t_vec	pos;
+	t_vec	dir;
+	t_vec	plane;
+	t_vec	ray_dir;
+	t_vec	map;
+	t_vec	step;
+	t_vec	side_dist;
+	t_vec	delta_dist;
+	int		side;
+	double	camera_x;
+	double	wall_dist;
+}	t_ray_data;
+
 typedef struct s_map_data
 {
 	char	**map;
@@ -75,6 +96,8 @@ typedef struct s_mlx_data
 	void		*mlx;
 	void		*win;
 	t_img_data	img;
+	t_ray_data	ray;
+	t_map_data	map_data;
 }	t_mlx_data;
 
 t_line		**read_map_file(char *map_file, t_line **head);
