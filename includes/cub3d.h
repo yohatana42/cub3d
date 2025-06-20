@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 15:41:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 17:35:13 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,8 @@ int			key_hook(int keycode, t_mlx_data *mlx_data);
 // util
 int			count_double_array(char **str);
 void		free_double_array(char **str);
-void		free_double_array_int(int **array);
+// void		free_double_array_int(int **array);
+void	free_double_array_int(int **array, int i_max);
 
 // debug
 void		print_line_list(t_line **head);

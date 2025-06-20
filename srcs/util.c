@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:05:23 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/18 16:06:32 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 17:34:41 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	free_double_array(char **str)
 	free(str);
 }
 
-void	free_double_array_int(int **array)
+void	free_double_array_int(int **array, int i_max)
 {
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (i < i_max)
 	{
 		free(array[i]);
 		i++;
