@@ -62,6 +62,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette srcs/*.c includes/*.h
+	norminette srcs/* includes/*
 
 .PHONY: all clean fclean re
