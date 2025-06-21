@@ -17,6 +17,11 @@ SRCS	= 	srcs/init_data.c\
 			srcs/debug.c\
 			srcs/validate_line_format.c\
 			srcs/init_data_util.c
+			srcs/validate_map.c\
+			srcs/validate_wall.c\
+			srcs/search_wall.c\
+			srcs/util.c\
+			srcs/dfs.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)
@@ -58,6 +63,9 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette srcs/*.c includes/*.h
+	norminette srcs includes
 
-.PHONY: all clean fclean re
+valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/test.cub
+
+.PHONY: all clean fclean re norm valgrind

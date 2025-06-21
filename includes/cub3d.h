@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:02:11 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:10:48 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define BIT_FLG_2 2
 # define BIT_FLG_4 4
 # define BIT_FLG_8 8
+# define SPACE '0'
+# define WALL '1'
 
 typedef struct s_line	t_line;
 
@@ -100,6 +102,12 @@ typedef struct s_mlx_data
 	t_map_data	*map_data;
 }	t_mlx_data;
 
+typedef struct s_maps
+{
+	char	**map;
+	int		**search_map;
+}	t_maps;
+
 t_line		**read_map_file(char *map_file, t_line **head);
 void		init_data(t_line **head, t_map_data *data, t_mlx_data *malx_data);
 void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
@@ -113,6 +121,12 @@ void		free_line_list(t_line **head);
 void		validate_infile(t_line **head);
 void		validate_infile_format(t_line **head);
 void		validate_line_format(t_line **head);
+void		validate_map(t_line *curr, t_line **head);
+void		validate_wall(t_line *curr, t_line **head);
+void		search_wall(char **map, t_line *curr, t_line **head);
+
+// dfs
+void		dfs(t_maps *maps, t_line **head, t_line *curr);
 
 // validate infile
 int			count_line_list(t_line **head);
@@ -122,6 +136,9 @@ void		exit_error_infile_format(char *str, t_line **head);
 bool		is_texture(char *line);
 bool		is_color(char *line);
 bool		is_map(char *line);
+int			get_max_len(t_line *curr);
+bool		is_player(char c);
+int			count_line_map(t_line *curr);
 
 // init_data
 void		exit_error_init_data(char *str, \
@@ -142,6 +159,7 @@ int			key_hook(int keycode, t_mlx_data *mlx_data);
 // util
 int			count_double_array(char **str);
 void		free_double_array(char **str);
+void		free_double_array_int(int **array, int i_max);
 
 // debug
 void		print_line_list(t_line **head);
