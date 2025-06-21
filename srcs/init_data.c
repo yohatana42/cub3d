@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:09:11 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:52:10 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	set_texture(t_line *line, t_map_data *map_data, t_line **head);
 static void	set_color(t_line *line, t_map_data *map_data, t_line **head);
-static char	**create_map_array(t_line *curr, \
-								t_line **head, \
-								t_map_data *map_data);
 static void	set_map(t_line *line, \
 					t_line **head, \
 					t_map_data *map_data);
@@ -31,11 +28,11 @@ void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
 	{
 		if (is_texture(line->str))
 			set_texture(line, map_data, head);
-		if (is_color(line->str))
+		else if (is_color(line->str))
 			set_color(line, map_data, head);
-		if (is_map(line->str))
+		else if (is_map(line->str))
 		{
-			set_map(line, map_data, head);
+			set_map(line, head, map_data);
 			break ;
 		}
 		line = line->next;
@@ -46,19 +43,26 @@ void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
 static void	set_texture(t_line *line, t_map_data *map_data, t_line **head)
 {
 	char	**path;
+	char	*after_trim;
 
 	path = ft_split(line->str, ' ');
 	if (!path)
 		exit_error_init_data("failed: malloc", map_data, head);
-	if (ft_strncmp("NO", path[0], 2) == 0)
-		map_data->north_path = path[1];
-	if (ft_strncmp("SO", path[0], 2) == 0)
-		map_data->south_path = path[1];
-	if (ft_strncmp("WE", path[0], 2) == 0)
-		map_data->west_path = path[1];
-	if (ft_strncmp("EA", path[0], 2) == 0)
-		map_data->east_path = path[1];
-	free(path[0]);
+	after_trim = ft_strtrim(path[1], "\n");
+	if (!after_trim)
+	{
+		free_double_array(path);
+		exit_error_init_data("failed: malloc", map_data, head);
+	}
+	if (ft_strcmp("NO", path[0]) == 0)
+		map_data->north_path = after_trim;
+	if (ft_strcmp("SO", path[0]) == 0)
+		map_data->south_path = after_trim;
+	if (ft_strcmp("WE", path[0]) == 0)
+		map_data->west_path = after_trim;
+	if (ft_strcmp("EA", path[0]) == 0)
+		map_data->east_path = after_trim;
+	free_double_array(path);
 }
 
 static void	set_color(t_line *line, t_map_data *map_data, t_line **head)
@@ -72,16 +76,22 @@ static void	set_color(t_line *line, t_map_data *map_data, t_line **head)
 		exit_error_init_data("failed: malloc", map_data, head);
 	colors = ft_split(str[1], ',');
 	if (!colors)
+	{
+		free_double_array(str);
 		exit_error_init_data("failed: malloc", map_data, head);
+	}
 	color = ft_calloc(sizeof(t_color), 1);
 	if (!color)
+	{
+		free_double_array(str);
 		exit_error_init_data("failed: malloc", map_data, head);
+	}
 	color->red = ft_atoi(colors[0]);
 	color->green = ft_atoi(colors[1]);
 	color->blue = ft_atoi(colors[2]);
-	if (ft_strcmp(str[0], "F"))
+	if (ft_strcmp(str[0], "F") == 0)
 		map_data->floor = color;
-	else
+	if (ft_strcmp(str[0], "C") == 0)
 		map_data->ceiling = color;
 	free_double_array(str);
 	free_double_array(colors);
@@ -100,7 +110,7 @@ static void	set_map(t_line *curr, \
 	max_len = get_max_len(curr);
 	map = (char **)ft_calloc(sizeof(char *), count_line_map(curr) + 1);
 	if (!map)
-		exit_error_infile_format("failed: malloc", head);
+		exit_error_init_data("failed: malloc", map_data, head);
 	i = 0;
 	while (count_line_map(curr) > i)
 	{

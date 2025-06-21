@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:10:48 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:22:33 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,6 @@ void		free_double_array_int(int **array, int i_max);
 
 // debug
 void		print_line_list(t_line **head);
+void		print_init_data(t_map_data *map_data, t_mlx_data *mlx_data);
 
 #endif
