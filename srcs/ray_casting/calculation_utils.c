@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:02:25 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/08 16:25:03 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/21 07:15:45 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,51 +48,42 @@ void	calculate_step_and_side_dist(t_ray_data *ray)
 	}
 }
 
-void	calculate_wall_distance(t_ray_data *ray)
-{
-	double	wall_dist;
-	double	perpendicular_distance;
-	double	wall_offset;
-
-	if (ray->side == 0)
-	{
-		wall_offset = (1 - ray->step.x) / 2;
-		perpendicular_distance = ray->map.x - ray->pos.x + wall_offset;
-		wall_dist = perpendicular_distance / ray->ray_dir.x;
-	}
-	else
-	{
-		wall_offset = (1 - ray->step.y) / 2;
-		perpendicular_distance = ray->map.y - ray->pos.y + wall_offset;
-		wall_dist = perpendicular_distance / ray->ray_dir.y;
-	}
-	ray->wall_dist = wall_dist;
-}
-
 void	perform_dda(t_ray_data *ray, int world_map[8][8])
 {
-	int	hit;
-	int	side;
+    bool    hit;
 
-	hit = 0;
-	while (hit == 0)
-	{
-		if (ray->side_dist.x < ray->side_dist.y)
-		{
-			ray->side_dist.x += ray->delta_dist.x;
-			ray->map.x += ray->step.x;
-			side = 0;
-		}
-		else
-		{
-			ray->side_dist.y += ray->delta_dist.y;
-			ray->map.y += ray->step.y;
-			side = 1;
-		}
-		if (ray->map.x < 0 || ray->map.x >= 8
-			|| ray->map.y < 0 || ray->map.y >= 8
-			|| world_map[(int)ray->map.x][(int)ray->map.y] > 0)
-			hit = 1;
-	}
-	ray->side = side;
+    hit = false;
+    while (!hit)
+    {
+        if (ray->side_dist.x < ray->side_dist.y)
+        {
+            ray->side_dist.x += ray->delta_dist.x;
+            ray->map.x += ray->step.x;
+            if (ray->step.x > 0)
+                ray->side = EAST;
+            else
+                ray->side = WEST;
+        }
+        else
+        {
+            ray->side_dist.y += ray->delta_dist.y;
+            ray->map.y += ray->step.y;
+            if (ray->step.y > 0)
+                ray->side = SOUTH;
+            else
+                ray->side = NORTH;
+        }
+        if (ray->map.x < 0 || ray->map.x >= 8
+            || ray->map.y < 0 || ray->map.y >= 8
+            || world_map[(int)ray->map.x][(int)ray->map.y] > 0)
+            hit = true;
+    }
+}
+
+void	calculate_wall_distance(t_ray_data *ray)
+{
+    if (ray->side == EAST || ray->side == WEST)
+        ray->wall_dist = (ray->map.x - ray->pos.x + (1 - ray->step.x) / 2) / ray->ray_dir.x;
+    else
+        ray->wall_dist = (ray->map.y - ray->pos.y + (1 - ray->step.y) / 2) / ray->ray_dir.y;
 }

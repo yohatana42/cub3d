@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 15:38:56 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/21 07:14:04 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,27 @@ typedef struct s_vec
 	double	y;
 }	t_vec;
 
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_direction;
+
 typedef struct s_ray_data
 {
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	plane;
-	t_vec	ray_dir;
-	t_vec	map;
-	t_vec	step;
-	t_vec	side_dist;
-	t_vec	delta_dist;
-	int		side;
-	double	camera_x;
-	double	wall_dist;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			plane;
+	t_vec			ray_dir;
+	t_vec			map;
+	t_vec			step;
+	t_vec			side_dist;
+	t_vec			delta_dist;
+	t_direction		side;
+	double			camera_x;
+	double			wall_dist;
 }	t_ray_data;
 
 typedef struct s_map_data
