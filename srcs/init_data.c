@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 15:05:54 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:26:51 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ static void	set_map(t_line *line, \
 					t_map_data *map_data);
 static void	copy_array(char *map, char *str, int max_len);
 
-void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
+void	init_data(t_line **head, t_mlx_data *mlx_data)
 {
-	t_line	*line;
+	t_line		*line;
+	t_map_data	*map_data;
 
 	line = *head;
+	map_data = ft_calloc(sizeof(t_map_data), 1);
+	if (!map_data)
+		exit_error_init_data("failed: malloc", map_data, head);
 	while (line)
 	{
 		if (is_texture(line->str))

@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 13:56:17 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:59:27 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:24:12 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	clean_map_data(t_map_data *map_data)
 	free(map_data->ceiling);
 	free(map_data->floor);
 	free_double_array(map_data->map);
+	free(map_data);
 }
 
 void	exit_error_init_data(char *str, \
