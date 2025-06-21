@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:52:10 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 15:05:54 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,8 @@ static void	set_color(t_line *line, t_map_data *map_data, t_line **head)
 	if (!str)
 		exit_error_init_data("failed: malloc", map_data, head);
 	colors = ft_split(str[1], ',');
-	if (!colors)
-	{
-		free_double_array(str);
-		exit_error_init_data("failed: malloc", map_data, head);
-	}
 	color = ft_calloc(sizeof(t_color), 1);
-	if (!color)
+	if (!color || !colors)
 	{
 		free_double_array(str);
 		exit_error_init_data("failed: malloc", map_data, head);
@@ -127,7 +122,6 @@ static void	set_map(t_line *curr, \
 	map[i] = NULL;
 	map_data->map = map;
 }
-
 
 static void	copy_array(char *map, char *str, int max_len)
 {
