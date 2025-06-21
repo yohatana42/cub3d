@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 22:02:30 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 22:06:31 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static void	set_color(t_line *line, t_map_data *map_data, t_line **head)
 
 void	set_map(t_line *line, t_map_data *map_data, t_line **head)
 {
+	char	**map;
 
 }
 
