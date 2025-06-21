@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:13:44 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/08 15:50:25 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:27:09 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_init(t_mlx_data *mlx_data, t_map_data *map_data)
+void	draw_init(t_mlx_data *mlx_data)
 {
 	mlx_data->img.img = mlx_new_image(mlx_data->mlx, WIDTH, HEIGHT);
 	if (!mlx_data->img.img)
@@ -27,5 +27,4 @@ void	draw_init(t_mlx_data *mlx_data, t_map_data *map_data)
 			&mlx_data->img.line_length,
 			&mlx_data->img.endian
 			);
-	(void)map_data;
 }

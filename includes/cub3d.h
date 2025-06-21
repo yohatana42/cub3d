@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 21:29:46 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:45:29 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ typedef struct s_maps
 }	t_maps;
 
 t_line		**read_map_file(char *map_file, t_line **head);
-void		init_data(t_line **head, t_map_data *data);
-void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
-void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
-void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
+void		init_data(t_line **head, t_mlx_data *mlx_data);
+int			clean_up(t_mlx_data *mlx_data);
+void		draw_init(t_mlx_data *mlx_data);
+void		draw(t_mlx_data *mlx_data);
 void		init_mlx(t_mlx_data *mlx_data);
-void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+void		mlx_event(t_mlx_data *mlx_data);
 void		free_line_list(t_line **head);
 
 // validate
@@ -140,6 +140,12 @@ int			get_max_len(t_line *curr);
 bool		is_player(char c);
 int			count_line_map(t_line *curr);
 
+// init_data
+void		exit_error_init_data(char *str, \
+							t_map_data *map_data, \
+							t_line **head);
+void		clean_map_data(t_map_data *map_data);
+
 // error
 void		print_error(char *str);
 void		exit_error(char *str);
@@ -157,5 +163,6 @@ void		free_double_array_int(int **array, int i_max);
 
 // debug
 void		print_line_list(t_line **head);
+void		print_init_data(t_map_data *map_data, t_mlx_data *mlx_data);
 
 #endif
