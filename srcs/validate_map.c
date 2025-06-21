@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:11:43 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 14:06:24 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 13:50:39 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,6 @@
 static void	replace_space_trim_return(t_line *curr);
 static void	validate_map_char(t_line *curr, t_line **head);
 
-/*
-・文字数が一番多いところに合わせて領域を確保
-・文字の種類が01方向の三種類か
-・スペースは0に置き換える
-・マップを二重配列にする
-・プレイヤーのいる部分が壁に囲まれているか
-→プレイヤーのいる空白部分を深さ優先で塗りつぶし、すべて探索し終わった際に
-一番端っこのインデックス行にはみ出していなければ良い
-*/
 void	validate_map(t_line *curr, t_line **head)
 {
 	replace_space_trim_return(curr);
@@ -43,7 +34,7 @@ static void	replace_space_trim_return(t_line *curr)
 		while (line->str[i])
 		{
 			if (line->str[i] == ' ')
-				line->str[i] = '0';
+				line->str[i] = SPACE;
 			if (line->str[i] == '\n')
 				line->str[i] = '\0';
 			i++;
@@ -63,7 +54,7 @@ static void	validate_map_char(t_line *curr, t_line **head)
 		i = 0;
 		while (line->str[i])
 		{
-			if (line->str[i] != '1' && line->str[i] != '0' && \
+			if (line->str[i] != WALL && line->str[i] != SPACE && \
 			line->str[i] != 'N' && line->str[i] != 'S' && \
 			line->str[i] != 'W' && line->str[i] != 'E')
 			{
