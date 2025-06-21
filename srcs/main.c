@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 14:31:50 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:10:47 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 	free_line_list(&head);
 	init_mlx(&mlx_data);
 	draw_init(&mlx_data, &map_data);
-	mlx_event(&mlx_data, &map_data);
+	mlx_event(&mlx_data);
 	draw(&mlx_data, &map_data);
 	free_line_list(&head);
-	clean_up(&mlx_data, &map_data);
+	clean_up(&mlx_data);
 	return (EXIT_SUCCESS);
 }
