@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:13:06 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 11:33:09 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:09:40 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	validate_texture(t_line *curr, t_line **head);
 static int	validate_color(t_line *curr, t_line **head);
 static void	validate_rgb_range(char **words, t_line **head);
-static void	validate_map(t_line *curr, t_line **head);
 
 void	validate_line_format(t_line **head)
 {
@@ -30,10 +29,13 @@ void	validate_line_format(t_line **head)
 	{
 		if (is_texture(curr->str))
 			texture_flg += validate_texture(curr, head);
-		if (is_color(curr->str))
+		else if (is_color(curr->str))
 			color_flg += validate_color(curr, head);
-		if (is_map(curr->str))
+		else if (is_map(curr->str))
+		{
 			validate_map(curr, head);
+			break ;
+		}
 		curr = curr->next;
 	}
 	if (!(texture_flg & BIT_FLG_1 && texture_flg & BIT_FLG_2 && \
@@ -115,10 +117,4 @@ static void	validate_rgb_range(char **words, t_line **head)
 		i++;
 	}
 	free_double_array(colors);
-}
-
-static void	validate_map(t_line *curr, t_line **head)
-{
-	(void)curr;
-	(void)head;
 }
