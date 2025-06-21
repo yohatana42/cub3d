@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:02:25 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/21 07:15:45 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:26:22 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,6 @@ void	calculate_step_and_side_dist(t_ray_data *ray)
 		ray->step.y = 1;
 		ray->side_dist.y = (ray->map.y + 1.0 - ray->pos.y) * ray->delta_dist.y;
 	}
-}
-
-void	perform_dda(t_ray_data *ray, int world_map[8][8])
-{
-    bool    hit;
-
-    hit = false;
-    while (!hit)
-    {
-        if (ray->side_dist.x < ray->side_dist.y)
-        {
-            ray->side_dist.x += ray->delta_dist.x;
-            ray->map.x += ray->step.x;
-            if (ray->step.x > 0)
-                ray->side = EAST;
-            else
-                ray->side = WEST;
-        }
-        else
-        {
-            ray->side_dist.y += ray->delta_dist.y;
-            ray->map.y += ray->step.y;
-            if (ray->step.y > 0)
-                ray->side = SOUTH;
-            else
-                ray->side = NORTH;
-        }
-        if (ray->map.x < 0 || ray->map.x >= 8
-            || ray->map.y < 0 || ray->map.y >= 8
-            || world_map[(int)ray->map.x][(int)ray->map.y] > 0)
-            hit = true;
-    }
 }
 
 void	calculate_wall_distance(t_ray_data *ray)
