@@ -15,7 +15,8 @@ SRCS	= 	srcs/init_data.c\
 			srcs/validate_infile_util.c\
 			srcs/validate_infile_format.c\
 			srcs/debug.c\
-			srcs/validate_line_format.c
+			srcs/validate_line_format.c\
+			srcs/init_data_util.c
 HEADERS	= \
 	includes/cub3d.h
 MAIN_OBJ = $(MAIN:.c=.o)

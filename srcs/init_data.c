@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:31:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 22:06:31 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:09:11 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 static void	set_texture(t_line *line, t_map_data *map_data, t_line **head);
 static void	set_color(t_line *line, t_map_data *map_data, t_line **head);
+static char	**create_map_array(t_line *curr, \
+								t_line **head, \
+								t_map_data *map_data);
+static void	set_map(t_line *line, \
+					t_line **head, \
+					t_map_data *map_data);
+static void	copy_array(char *map, char *str, int max_len);
 
 void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
 {
@@ -22,12 +29,15 @@ void	init_data(t_line **head, t_map_data *map_data, t_mlx_data *mlx_data)
 	line = *head;
 	while (line)
 	{
-		if (is_texture(line))
+		if (is_texture(line->str))
 			set_texture(line, map_data, head);
-		if (is_color(line))
+		if (is_color(line->str))
 			set_color(line, map_data, head);
-		if (is_map(line))
+		if (is_map(line->str))
+		{
 			set_map(line, map_data, head);
+			break ;
+		}
 		line = line->next;
 	}
 	mlx_data->map_data = map_data;
@@ -77,25 +87,52 @@ static void	set_color(t_line *line, t_map_data *map_data, t_line **head)
 	free_double_array(colors);
 }
 
-void	set_map(t_line *line, t_map_data *map_data, t_line **head)
+static void	set_map(t_line *curr, \
+					t_line **head, \
+					t_map_data *map_data)
 {
 	char	**map;
+	t_line	*line;
+	int		i;
+	int		max_len;
 
+	line = curr;
+	max_len = get_max_len(curr);
+	map = (char **)ft_calloc(sizeof(char *), count_line_map(curr) + 1);
+	if (!map)
+		exit_error_infile_format("failed: malloc", head);
+	i = 0;
+	while (count_line_map(curr) > i)
+	{
+		map[i] = (char *)ft_calloc(sizeof(char), max_len + 1);
+		if (!map[i])
+		{
+			free_double_array(map);
+			exit_error_init_data("failed: malloc", map_data, head);
+		}
+		copy_array(map[i], line->str, max_len);
+		line = line->next;
+		i++;
+	}
+	map[i] = NULL;
+	map_data->map = map;
 }
 
-void	clean_map_data(t_map_data *map_data)
-{
-	free(map_data->north_path);
-	free(map_data->south_path);
-	free(map_data->east_path);
-	free(map_data->west_path);
-	free(map_data->ceiling);
-	free(map_data->floor);
-}
 
-void	exit_error_init_data(char *str, t_map_data *map_data, t_line **head)
+static void	copy_array(char *map, char *str, int max_len)
 {
-	clean_map_data(map_data);
-	free_line_list(head);
-	exit_error(str);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		map[i] = str[i];
+		i++;
+	}
+	while (max_len > i)
+	{
+		map[i] = '0';
+		i++;
+	}
+	map[max_len] = '\0';
 }

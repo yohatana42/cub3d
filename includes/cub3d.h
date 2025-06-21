@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 21:30:34 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:02:11 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_map_data
 	char	*south_path;
 	char	*west_path;
 	char	*east_path;
-	t_color	*roof;
+	t_color	*ceiling;
 	t_color	*floor;
 }	t_map_data;
 
@@ -122,6 +122,12 @@ void		exit_error_infile_format(char *str, t_line **head);
 bool		is_texture(char *line);
 bool		is_color(char *line);
 bool		is_map(char *line);
+
+// init_data
+void		exit_error_init_data(char *str, \
+							t_map_data *map_data, \
+							t_line **head);
+void		clean_map_data(t_map_data *map_data);
 
 // error
 void		print_error(char *str);
