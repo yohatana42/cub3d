@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 11:57:54 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 19:45:43 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:05:45 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,4 @@ void	exit_error_infile_format(char *str, t_line **head)
 	ft_putstr_fd("invalid map: ", 2);
 	ft_putendl_fd(str, 2);
 	exit(1);
-}
-
-int	count_double_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-void	free_double_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
 }

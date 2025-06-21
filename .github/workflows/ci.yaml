@@ -17,7 +17,7 @@ jobs:
         - name: norm
           run: |
               pip install norminette==3.3.55
-              norminette srcs/ includes/
+              norminette srcs includes
         - name: make
           run: make
         - name: clean_up

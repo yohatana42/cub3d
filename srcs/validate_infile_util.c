@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:08:24 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 15:26:50 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:07:40 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,31 @@ bool	is_map(char *line)
 			return (true);
 		i++;
 	}
+	return (false);
+}
+
+int	get_max_len(t_line *curr)
+{
+	t_line	*line;
+	int		max_len;
+	int		temp;
+
+	line = curr;
+	max_len = 0;
+	temp = 0;
+	while (line)
+	{
+		temp = ft_strlen(line->str);
+		if (temp > max_len)
+			max_len = temp;
+		line = line->next;
+	}
+	return (max_len);
+}
+
+bool	is_player(char c)
+{
+	if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
+		return (true);
 	return (false);
 }

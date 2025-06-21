@@ -1,29 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 17:09:07 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/17 14:52:20 by yohatana         ###   ########.fr       */
+/*   Created: 2025/06/18 16:05:23 by yohatana          #+#    #+#             */
+/*   Updated: 2025/06/20 17:34:41 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3d.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	count_double_array(char **str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] != 0 && i < size - 1)
+	while (str[i])
 	{
-		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (ft_strlen(src));
+	return (i);
+}
+
+void	free_double_array(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	free_double_array_int(int **array, int i_max)
+{
+	int	i;
+
+	i = 0;
+	while (i < i_max)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
