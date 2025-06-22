@@ -6,7 +6,7 @@
 /*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/08 16:01:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:08:44 by yohatana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	close_window(t_mlx_data *mlx_data)
 int	key_hook(int keycode, t_mlx_data *mlx_data)
 {
 	if (keycode == XK_Escape)
-		close_window(mlx_data);
+	{
+		clean_up(mlx_data);
+	}
 	render_next_frame(mlx_data);
 	return (0);
 }
