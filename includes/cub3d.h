@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 16:45:29 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:23:25 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
+# include <math.h>
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
@@ -58,30 +59,42 @@ typedef struct s_vec
 	double	y;
 }	t_vec;
 
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_direction;
+
 typedef struct s_ray_data
 {
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	plane;
-	t_vec	ray_dir;
-	t_vec	map;
-	t_vec	step;
-	t_vec	side_dist;
-	t_vec	delta_dist;
-	int		side;
-	double	camera_x;
-	double	wall_dist;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			plane;
+	t_vec			ray_dir;
+	t_vec			map;
+	t_vec			step;
+	t_vec			side_dist;
+	t_vec			delta_dist;
+	t_direction		side;
+	double			camera_x;
+	double			wall_dist;
 }	t_ray_data;
 
 typedef struct s_map_data
 {
-	char	**map;
-	char	*north_path;
-	char	*south_path;
-	char	*west_path;
-	char	*east_path;
-	t_color	*ceiling;
-	t_color	*floor;
+	char			**map;
+	unsigned int	width;
+	unsigned int	height;
+	char			*north_path;
+	char			*south_path;
+	char			*west_path;
+	char			*east_path;
+	t_color			*ceiling;
+	t_color			*floor;
+	t_vec			player_pos;
+	t_direction		player_dir;
 }	t_map_data;
 
 typedef struct s_img_data
@@ -93,6 +106,21 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
+typedef struct s_texture
+{
+	t_img_data	img;
+	int			width;
+	int			height;
+}	t_texture;
+
+struct s_wall_params
+{
+	int			draw_start;
+	int			draw_end;
+	t_texture	*tex;
+	int			tex_x;
+};
+
 typedef struct s_mlx_data
 {
 	void		*mlx;
@@ -100,6 +128,10 @@ typedef struct s_mlx_data
 	t_img_data	img;
 	t_ray_data	*ray;
 	t_map_data	*map_data;
+	t_texture	north_tex;
+	t_texture	south_tex;
+	t_texture	west_tex;
+	t_texture	east_tex;
 }	t_mlx_data;
 
 typedef struct s_maps
@@ -113,6 +145,7 @@ void		init_data(t_line **head, t_mlx_data *mlx_data);
 int			clean_up(t_mlx_data *mlx_data);
 void		draw_init(t_mlx_data *mlx_data);
 void		draw(t_mlx_data *mlx_data);
+void		ray_casting(t_mlx_data *mlx_data, t_map_data *map_data);
 void		init_mlx(t_mlx_data *mlx_data);
 void		mlx_event(t_mlx_data *mlx_data);
 void		free_line_list(t_line **head);
@@ -141,10 +174,12 @@ bool		is_player(char c);
 int			count_line_map(t_line *curr);
 
 // init_data
-void		exit_error_init_data(char *str, \
-							t_map_data *map_data, \
-							t_line **head);
+void		exit_error_init_data(char *str,
+				t_map_data *map_data,
+				t_line **head);
 void		clean_map_data(t_map_data *map_data);
+void		find_and_set_player(t_map_data *map_data);
+void		set_map(t_line *curr, t_line **head, t_map_data *map_data);
 
 // error
 void		print_error(char *str);
@@ -160,6 +195,30 @@ int			key_hook(int keycode, t_mlx_data *mlx_data);
 int			count_double_array(char **str);
 void		free_double_array(char **str);
 void		free_double_array_int(int **array, int i_max);
+
+// ray_casting calulation utils
+void		calculate_ray_direction(t_ray_data *ray);
+void		calculate_delta_distances(t_ray_data *ray);
+void		calculate_step_and_side_dist(t_ray_data *ray);
+void		calculate_wall_distance(t_ray_data *ray);
+void		perform_dda(t_ray_data *ray, t_map_data *map_data);
+
+// ray_casting draw utils
+void		draw_ceiling(t_mlx_data *mlx_data, int x, int draw_start);
+void		draw_floor(t_mlx_data *mlx_data, int x, int draw_end);
+void		draw_wall(
+				t_mlx_data *mlx_data,
+				int x,
+				int draw_start,
+				int draw_end);
+
+// keyhook_utils
+void		move_forward(t_ray_data *ray);
+void		move_backward(t_ray_data *ray);
+void		move_left(t_ray_data *ray);
+void		move_right(t_ray_data *ray);
+void		rotate_right(t_ray_data *ray);
+void		rotate_left(t_ray_data *ray);
 
 // debug
 void		print_line_list(t_line **head);

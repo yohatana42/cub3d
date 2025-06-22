@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   validate_infile_format.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:09:25 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/16 19:15:48 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:32:23 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static t_line	*validate_texture_block(t_line *curr, \
-										t_line *pre, \
-										t_line **head);
-static t_line	*validate_color_block(t_line *curr, \
-										t_line *pre, \
-										t_line **head);
-static t_line	*validate_map_block(t_line *curr, \
-										t_line *pre, \
-										t_line **head);
+static t_line	*validate_texture_block(
+					t_line *curr,
+					t_line *pre,
+					t_line **head);
+static t_line	*validate_color_block(
+					t_line *curr,
+					t_line *pre,
+					t_line **head);
+static t_line	*validate_map_block(
+					t_line *curr,
+					t_line *pre,
+					t_line **head);
 
 void	validate_infile_format(t_line **head)
 {
@@ -44,15 +47,15 @@ void	validate_infile_format(t_line **head)
 				return ;
 		}
 		pre_line = curr;
-		if (!is_texture(curr->str) && \
-			!is_color(curr->str) && !is_map(curr->str) && \
-			ft_strcmp(curr->str, "\n") != 0)
+		if (!is_texture(curr->str)
+			&& !is_color(curr->str) && !is_map(curr->str)
+			&& ft_strcmp(curr->str, "\n") != 0)
 			exit_error_infile_format("", head);
 	}
 }
 
-static t_line	*validate_texture_block(t_line *curr, \
-										t_line *pre, \
+static t_line	*validate_texture_block(t_line *curr,
+										t_line *pre,
 										t_line **head)
 {
 	t_line	*watch_line;
@@ -79,8 +82,8 @@ static t_line	*validate_texture_block(t_line *curr, \
 	return (curr);
 }
 
-static t_line	*validate_color_block(t_line *curr, \
-										t_line *pre, \
+static t_line	*validate_color_block(t_line *curr,
+										t_line *pre,
 										t_line **head)
 {
 	t_line	*watch_line;
@@ -107,8 +110,8 @@ static t_line	*validate_color_block(t_line *curr, \
 	return (curr);
 }
 
-static t_line	*validate_map_block(t_line *curr, \
-										t_line *pre, \
+static t_line	*validate_map_block(t_line *curr,
+										t_line *pre,
 										t_line **head)
 {
 	t_line	*watch_line;
@@ -122,8 +125,8 @@ static t_line	*validate_map_block(t_line *curr, \
 	}
 	while (watch_line)
 	{
-		if (ft_strcmp(watch_line->str, "\n") != 0 && \
-		ft_strcmp(watch_line->str, "") != 0)
+		if (ft_strcmp(watch_line->str, "\n") != 0
+			&& ft_strcmp(watch_line->str, "") != 0)
 			exit_error_infile_format("map must be the last element.", head);
 		watch_line = watch_line->next;
 	}

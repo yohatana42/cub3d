@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_wall.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:59:59 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 21:03:11 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:20:24 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static void	search_player(char **map, t_line **head)
 	if (count != 1)
 	{
 		free_double_array(map);
-		exit_error_infile_format(\
+		exit_error_infile_format(
 			"map must contain exactly one player", head);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:40:12 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 20:37:06 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:06:13 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	dfs(t_maps *maps, t_line **head, t_line *curr)
 	y = get_player_position_y(maps->map);
 	dfs_exec(maps, x, y);
 	i = 0;
-	j = 0;
 	while (i < count_line_map(curr))
 	{
 		j = 0;
 		while (j < get_max_len(curr))
 		{
-			if ((i == 0 || i == count_line_map(curr) - 1 || j == 0 \
-			|| j == get_max_len(curr) - 1) && maps->search_map[i][j] == 1)
+			if ((i == 0 || i == count_line_map(curr) - 1 || j == 0
+					|| j == get_max_len(curr) - 1)
+				&& maps->search_map[i][j] == 1)
 			{
 				free_maps(maps, curr);
 				exit_error_infile_format("map must be surrounded '1'", head);
@@ -55,10 +55,10 @@ static void	free_maps(t_maps *maps, t_line *curr)
 }
 
 static int	dfs_exec(t_maps *maps,
-					int x, \
-					int y)
+				int x,
+				int y)
 {
-	if (x < 0 || (int)ft_strlen(maps->map[0]) - 1 < x \
+	if (x < 0 || (int)ft_strlen(maps->map[0]) - 1 < x
 		|| y < 0 || count_double_array(maps->map) - 1 < y)
 		return (0);
 	if (maps->search_map[y][x] == 1)

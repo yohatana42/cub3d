@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 13:56:17 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 16:24:12 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:15:46 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	clean_map_data(t_map_data *map_data)
 	free(map_data);
 }
 
-void	exit_error_init_data(char *str, \
-							t_map_data *map_data, \
-							t_line **head)
+void	exit_error_init_data(char *str,
+						t_map_data *map_data,
+						t_line **head)
 {
 	clean_map_data(map_data);
 	free_line_list(head);

@@ -1,6 +1,9 @@
-NAME	= cub3d
+NAME	= cub3D
 MAIN	= srcs/main.c
-SRCS	= 	srcs/init_data.c\
+SRCS	= 	srcs/init_data/init_data.c\
+			srcs/init_data/init_data_util.c\
+			srcs/init_data/set_player.c\
+			srcs/init_data/set_map.c\
 			srcs/error.c\
 			srcs/mlx_event.c\
 			srcs/init_mlx.c\
@@ -10,13 +13,18 @@ SRCS	= 	srcs/init_data.c\
 			srcs/read_map_file.c\
 			srcs/mlx_utils.c\
 			srcs/draw.c\
+			srcs/ray_casting/ray_casting.c\
+			srcs/ray_casting/calculation_utils.c\
+			srcs/ray_casting/dda.c\
+			srcs/ray_casting/draw_utils.c\
+			srcs/keyhook_utils/arrow.c\
+			srcs/keyhook_utils/wasd.c\
 			get_next_line/get_next_line_utils.c\
 			get_next_line/get_next_line.c\
 			srcs/validate_infile_util.c\
 			srcs/validate_infile_format.c\
 			srcs/debug.c\
 			srcs/validate_line_format.c\
-			srcs/init_data_util.c\
 			srcs/validate_map.c\
 			srcs/validate_wall.c\
 			srcs/search_wall.c\
