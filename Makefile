@@ -1,4 +1,4 @@
-NAME	= cub3d
+NAME	= cub3D
 MAIN	= srcs/main.c
 SRCS	= 	srcs/init_data/init_data.c\
 			srcs/init_data/init_data_util.c\
