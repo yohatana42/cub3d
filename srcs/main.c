@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:52 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 16:25:23 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:46:16 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_line		*head;
 
 	head = NULL;
-	ft_memset(&mlx_data, 0, 8);
+	ft_memset(&mlx_data, 0, sizeof(t_mlx_data));
 	if (argc != 2)
 		exit_error("usage: ./cub3d [file name].cub");
 	read_map_file(argv[1], &head);
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 	draw_init(&mlx_data);
 	mlx_event(&mlx_data);
 	draw(&mlx_data);
-	free_line_list(&head);
 	clean_up(&mlx_data);
 	return (EXIT_SUCCESS);
 }

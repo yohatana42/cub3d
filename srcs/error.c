@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohatana <yohatana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 13:21:28 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/11 19:22:42 by yohatana         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:45:58 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_error(char *str)
 {
-	printf("Error\n");
-	printf("%s\n", str);
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(str, 2);
 }
 
 void	exit_error(char *str)
