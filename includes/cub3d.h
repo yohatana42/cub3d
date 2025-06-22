@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/21 19:26:42 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:19:19 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,21 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
+typedef struct s_texture
+{
+	t_img_data	img;
+	int			width;
+	int			height;
+}	t_texture;
+
+struct s_wall_params
+{
+	int			draw_start;
+	int			draw_end;
+	t_texture	*tex;
+	int			tex_x;
+};
+
 typedef struct s_mlx_data
 {
 	void		*mlx;
@@ -109,6 +124,10 @@ typedef struct s_mlx_data
 	t_img_data	img;
 	t_ray_data	*ray;
 	t_map_data	*map_data;
+	t_texture	north_tex;
+	t_texture	south_tex;
+	t_texture	west_tex;
+	t_texture	east_tex;
 }	t_mlx_data;
 
 typedef struct s_maps
