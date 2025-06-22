@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 15:27:23 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:36:10 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	render_next_frame(t_mlx_data *mlx_data, t_map_data *map_data)
+int	render_next_frame(t_mlx_data *mlx_data)
 {
-	ray_casting(mlx_data, map_data);
+	ray_casting(mlx_data, mlx_data->map_data);
 	mlx_put_image_to_window(
 		mlx_data->mlx,
 		mlx_data->win,
@@ -49,7 +49,7 @@ int	close_window(t_mlx_data *mlx_data)
 int	key_hook(int keycode, t_mlx_data *mlx_data)
 {
 	if (keycode == XK_Escape)
-		close_window(mlx_data);
+		clean_up(mlx_data);
 	if (keycode == XK_w)
 		move_forward(mlx_data->ray);
 	if (keycode == XK_s)
@@ -62,6 +62,6 @@ int	key_hook(int keycode, t_mlx_data *mlx_data)
 		rotate_right(mlx_data->ray);
 	if (keycode == XK_Left)
 		rotate_left(mlx_data->ray);
-	render_next_frame(mlx_data, NULL);
+	render_next_frame(mlx_data);
 	return (0);
 }

@@ -22,6 +22,7 @@ SRCS	= 	srcs/init_data.c\
 			srcs/validate_infile_format.c\
 			srcs/debug.c\
 			srcs/validate_line_format.c\
+			srcs/init_data_util.c\
 			srcs/validate_map.c\
 			srcs/validate_wall.c\
 			srcs/search_wall.c\
@@ -50,7 +51,7 @@ $(MINILIBX_DIR)/libmlx_Linux.a:
 	make -C $(MINILIBX_DIR)
 
 $(NAME): $(MAIN_OBJ) $(OBJS) $(LIBFT)/libft.a $(MINILIBX_DIR)/libmlx_Linux.a
-	$(CC) $(CFLAG) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -lft -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
+	$(CC) $(CFLAGS) -o $(NAME) $(MAIN_OBJ) $(OBJS) -L$(LIBFT) -lft -L$(MINILIBX_DIR) -lmlx -lm -lXext -lX11
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@

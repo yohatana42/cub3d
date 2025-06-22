@@ -6,13 +6,13 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:13:44 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/20 15:07:45 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:32:47 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_init(t_mlx_data *mlx_data, t_map_data *map_data)
+void	draw_init(t_mlx_data *mlx_data)
 {
 	mlx_data->ray = ft_calloc(1, sizeof(t_ray_data));
 	if (!mlx_data->ray)
@@ -34,5 +34,4 @@ void	draw_init(t_mlx_data *mlx_data, t_map_data *map_data)
 			&mlx_data->img.line_length,
 			&mlx_data->img.endian
 			);
-	(void)map_data;
 }

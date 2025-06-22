@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 02:19:19 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:34:48 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,13 @@ typedef struct s_maps
 }	t_maps;
 
 t_line		**read_map_file(char *map_file, t_line **head);
-void		init_data(t_line **head, t_map_data *data);
-void		clean_up(t_mlx_data *mlx_data, t_map_data *data);
-void		draw_init(t_mlx_data *mlx_data, t_map_data *data);
-void		draw(t_mlx_data *mlx_data, t_map_data *map_data);
+void		init_data(t_line **head, t_mlx_data *mlx_data);
+int			clean_up(t_mlx_data *mlx_data);
+void		draw_init(t_mlx_data *mlx_data);
+void		draw(t_mlx_data *mlx_data);
 void		ray_casting(t_mlx_data *mlx_data, t_map_data *map_data);
 void		init_mlx(t_mlx_data *mlx_data);
-void		mlx_event(t_mlx_data *mlx_data, t_map_data *data);
+void		mlx_event(t_mlx_data *mlx_data);
 void		free_line_list(t_line **head);
 
 // validate
@@ -169,13 +169,19 @@ int			get_max_len(t_line *curr);
 bool		is_player(char c);
 int			count_line_map(t_line *curr);
 
+// init_data
+void		exit_error_init_data(char *str, \
+							t_map_data *map_data, \
+							t_line **head);
+void		clean_map_data(t_map_data *map_data);
+
 // error
 void		print_error(char *str);
 void		exit_error(char *str);
 
 // mlx_utils
 void		my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
-int			render_next_frame(t_mlx_data *mlx_data, t_map_data *map_data);
+int			render_next_frame(t_mlx_data *mlx_data);
 int			close_window(t_mlx_data *mlx_data);
 int			key_hook(int keycode, t_mlx_data *mlx_data);
 
@@ -210,5 +216,6 @@ void		rotate_left(t_ray_data *ray);
 
 // debug
 void		print_line_list(t_line **head);
+void		print_init_data(t_map_data *map_data, t_mlx_data *mlx_data);
 
 #endif

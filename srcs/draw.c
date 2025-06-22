@@ -6,11 +6,20 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:34:16 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 15:27:49 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 02:35:45 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static void	init_ray_data(t_ray_data *ray);
+
+void	draw(t_mlx_data *mlx_data)
+{
+	init_ray_data(mlx_data->ray);
+	render_next_frame(mlx_data);
+	mlx_loop(mlx_data->mlx);
+}
 
 static void	init_ray_data(t_ray_data *ray)
 {
@@ -20,11 +29,4 @@ static void	init_ray_data(t_ray_data *ray)
 	ray->dir.y = 0.0;
 	ray->plane.x = 0.0;
 	ray->plane.y = 0.66;
-}
-
-void	draw(t_mlx_data *mlx_data, t_map_data *map_data)
-{
-	init_ray_data(mlx_data->ray);
-	render_next_frame(mlx_data, map_data);
-	mlx_loop(mlx_data->mlx);
 }
