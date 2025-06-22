@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:34:16 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 03:19:56 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 04:02:28 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_north_south(t_ray_data *ray, int is_south)
 {
 	ray->dir.x = 0.0;
 	ray->dir.y = -1.0 + (2.0 * is_south);
-	ray->plane.x = -0.66 + (1.32 * is_south);
+	ray->plane.x = 0.66 - (1.32 * is_south);
 	ray->plane.y = 0.0;
 }
 

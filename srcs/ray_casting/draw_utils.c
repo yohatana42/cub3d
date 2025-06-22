@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:33:39 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 03:25:31 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 04:05:10 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	draw_wall(t_mlx_data *mlx_data, int x, int draw_start, int draw_end)
 			+ mlx_data->ray->wall_dist * mlx_data->ray->ray_dir.y;
 	wall_x -= floor(wall_x);
 	params.tex_x = (int)(wall_x * (double)params.tex->width);
-	if (mlx_data->ray->side == NORTH || mlx_data->ray->side == EAST)
+	if (mlx_data->ray->side == SOUTH || mlx_data->ray->side == WEST)
 		params.tex_x = params.tex->width - params.tex_x - 1;
 	params.draw_start = draw_start;
 	params.draw_end = draw_end;
