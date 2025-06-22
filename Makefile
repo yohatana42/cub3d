@@ -74,6 +74,6 @@ norm:
 	norminette srcs includes
 
 valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./cub3d maps/test.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./cub3D maps/has_space_map.cub
 
 .PHONY: all clean fclean re norm valgrind

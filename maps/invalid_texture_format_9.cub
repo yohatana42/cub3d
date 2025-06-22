@@ -1,9 +1,9 @@
 F 255,30,0
 C 200,100,0
 
-NO ../textures/book_shell.xpm
-SO ../textures/book_shell.xpm
-EA ../texture/book_shell.xpm
+NO textures/book_shell.xpm
+SO textures/book_shell.xpm
+EA textures/book_shell.xpm
 WE
 
 11111
