@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 03:14:23 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:23:25 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ void		calculate_wall_distance(t_ray_data *ray);
 void		perform_dda(t_ray_data *ray, t_map_data *map_data);
 
 // ray_casting draw utils
-void		draw_roof(t_mlx_data *mlx_data, int x, int draw_start);
+void		draw_ceiling(t_mlx_data *mlx_data, int x, int draw_start);
 void		draw_floor(t_mlx_data *mlx_data, int x, int draw_end);
 void		draw_wall(
 				t_mlx_data *mlx_data,

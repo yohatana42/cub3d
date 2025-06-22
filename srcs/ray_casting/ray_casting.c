@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:02:25 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 03:02:47 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:23:34 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	draw_wall_line(t_mlx_data *mlx_data, int x, t_ray_data *ray)
 		draw_start = 0;
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
-	draw_roof(mlx_data, x, draw_start);
+	draw_ceiling(mlx_data, x, draw_start);
 	draw_wall(mlx_data, x, draw_start, draw_end);
 	draw_floor(mlx_data, x, draw_end);
 }

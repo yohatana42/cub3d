@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:33:39 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 02:19:29 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:25:31 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@ static int	get_texture_color(t_texture *tex, int x, int y);
 static void	draw_wall_strip(t_mlx_data *mlx_data, int x,
 				struct s_wall_params *params);
 
-void	draw_roof(t_mlx_data *mlx_data, int x, int draw_start)
+void	draw_ceiling(t_mlx_data *mlx_data, int x, int draw_start)
 {
 	int	y;
+	int	ceiling_color;
 
+	ceiling_color = ((mlx_data->map_data->ceiling->red << 16)
+			| (mlx_data->map_data->ceiling->green << 8)
+			| mlx_data->map_data->ceiling->blue);
 	y = 0;
 	while (y < draw_start)
 	{
-		my_mlx_pixel_put(&mlx_data->img, x, y, 0xFFFFFF);
+		my_mlx_pixel_put(&mlx_data->img, x, y, ceiling_color);
 		y++;
 	}
 }
@@ -31,11 +35,15 @@ void	draw_roof(t_mlx_data *mlx_data, int x, int draw_start)
 void	draw_floor(t_mlx_data *mlx_data, int x, int draw_end)
 {
 	int	y;
+	int	floor_color;
 
+	floor_color = ((mlx_data->map_data->floor->red << 16)
+			| (mlx_data->map_data->floor->green << 8)
+			| mlx_data->map_data->floor->blue);
 	y = draw_end;
 	while (y < HEIGHT)
 	{
-		my_mlx_pixel_put(&mlx_data->img, x, y, 0x000000);
+		my_mlx_pixel_put(&mlx_data->img, x, y, floor_color);
 		y++;
 	}
 }
