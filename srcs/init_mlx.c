@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:12:20 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 02:27:43 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:01:49 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ static void	load_texture(t_mlx_data *mlx_data, t_texture *tex, char *path);
 
 void	init_mlx(t_mlx_data *mlx_data)
 {
+	t_map_data	*map_data;
+
+	map_data = mlx_data->map_data;
 	mlx_data->mlx = mlx_init();
 	if (!mlx_data->mlx)
 	{
@@ -29,10 +32,10 @@ void	init_mlx(t_mlx_data *mlx_data)
 		print_error("mlx_new_windows failed. :(");
 		exit(EXIT_FAILURE);
 	}
-	load_texture(mlx_data, &mlx_data->north_tex, "textures/book.xpm");
-	load_texture(mlx_data, &mlx_data->south_tex, "textures/book.xpm");
-	load_texture(mlx_data, &mlx_data->west_tex, "textures/book.xpm");
-	load_texture(mlx_data, &mlx_data->east_tex, "textures/book.xpm");
+	load_texture(mlx_data, &mlx_data->north_tex, map_data->north_path);
+	load_texture(mlx_data, &mlx_data->south_tex, map_data->south_path);
+	load_texture(mlx_data, &mlx_data->west_tex, map_data->west_path);
+	load_texture(mlx_data, &mlx_data->east_tex, map_data->east_path);
 }
 
 static void	load_texture(t_mlx_data *mlx_data, t_texture *tex, char *path)

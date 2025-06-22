@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 02:34:48 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:14:23 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,17 @@ typedef struct s_ray_data
 
 typedef struct s_map_data
 {
-	char	**map;
-	char	*north_path;
-	char	*south_path;
-	char	*west_path;
-	char	*east_path;
-	t_color	*ceiling;
-	t_color	*floor;
+	char			**map;
+	unsigned int	width;
+	unsigned int	height;
+	char			*north_path;
+	char			*south_path;
+	char			*west_path;
+	char			*east_path;
+	t_color			*ceiling;
+	t_color			*floor;
+	t_vec			player_pos;
+	t_direction		player_dir;
 }	t_map_data;
 
 typedef struct s_img_data
@@ -170,10 +174,12 @@ bool		is_player(char c);
 int			count_line_map(t_line *curr);
 
 // init_data
-void		exit_error_init_data(char *str, \
-							t_map_data *map_data, \
-							t_line **head);
+void		exit_error_init_data(char *str,
+				t_map_data *map_data,
+				t_line **head);
 void		clean_map_data(t_map_data *map_data);
+void		find_and_set_player(t_map_data *map_data);
+void		set_map(t_line *curr, t_line **head, t_map_data *map_data);
 
 // error
 void		print_error(char *str);
@@ -195,7 +201,7 @@ void		calculate_ray_direction(t_ray_data *ray);
 void		calculate_delta_distances(t_ray_data *ray);
 void		calculate_step_and_side_dist(t_ray_data *ray);
 void		calculate_wall_distance(t_ray_data *ray);
-void		perform_dda(t_ray_data *ray, int world_map[8][8]);
+void		perform_dda(t_ray_data *ray, t_map_data *map_data);
 
 // ray_casting draw utils
 void		draw_roof(t_mlx_data *mlx_data, int x, int draw_start);

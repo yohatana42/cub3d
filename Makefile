@@ -1,6 +1,9 @@
 NAME	= cub3d
 MAIN	= srcs/main.c
-SRCS	= 	srcs/init_data.c\
+SRCS	= 	srcs/init_data/init_data.c\
+			srcs/init_data/init_data_util.c\
+			srcs/init_data/set_player.c\
+			srcs/init_data/set_map.c\
 			srcs/error.c\
 			srcs/mlx_event.c\
 			srcs/init_mlx.c\
@@ -22,7 +25,6 @@ SRCS	= 	srcs/init_data.c\
 			srcs/validate_infile_format.c\
 			srcs/debug.c\
 			srcs/validate_line_format.c\
-			srcs/init_data_util.c\
 			srcs/validate_map.c\
 			srcs/validate_wall.c\
 			srcs/search_wall.c\

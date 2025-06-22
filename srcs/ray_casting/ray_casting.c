@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 16:02:25 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/20 15:38:01 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:02:47 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,8 @@ static void		draw_wall_line(t_mlx_data *mlx_data, int x, t_ray_data *ray);
 
 void	ray_casting(t_mlx_data *mlx_data, t_map_data *map_data)
 {
-	(void)map_data;
 	t_ray_data	*ray;
 	int			x;
-	int world_map[8][8] = {
-		{1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 1, 0, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 1, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1}
-	};
 
 	ray = mlx_data->ray;
 	x = 0;
@@ -40,7 +29,7 @@ void	ray_casting(t_mlx_data *mlx_data, t_map_data *map_data)
 		ray->map.y = (int)(ray->pos.y);
 		calculate_delta_distances(ray);
 		calculate_step_and_side_dist(ray);
-		perform_dda(ray, world_map);
+		perform_dda(ray, map_data);
 		calculate_wall_distance(ray);
 		draw_wall_line(mlx_data, x, ray);
 		x++;

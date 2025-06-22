@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:26:27 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 02:24:32 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:03:01 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	advance_ray(t_ray_data *ray);
 
-void	perform_dda(t_ray_data *ray, int world_map[8][8])
+void	perform_dda(t_ray_data *ray, t_map_data *map_data)
 {
 	bool	hit;
 
@@ -22,9 +22,9 @@ void	perform_dda(t_ray_data *ray, int world_map[8][8])
 	while (!hit)
 	{
 		advance_ray(ray);
-		if (ray->map.x < 0 || ray->map.x >= 8
-			|| ray->map.y < 0 || ray->map.y >= 8
-			|| world_map[(int)ray->map.x][(int)ray->map.y] > 0)
+		if (ray->map.y < 0 || (unsigned int)ray->map.y >= map_data->height
+			|| ray->map.x < 0 || (unsigned int)ray->map.x >= map_data->width
+			|| map_data->map[(int)ray->map.y][(int)ray->map.x] == '1')
 			hit = true;
 	}
 }
