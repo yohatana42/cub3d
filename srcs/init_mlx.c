@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:12:20 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 16:32:26 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/22 16:35:44 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_mlx(t_mlx_data *mlx_data)
 	{
 		mlx_destroy_display(mlx_data->mlx);
 		free(mlx_data->mlx);
+		clean_map_data(mlx_data->map_data);
 		exit_error("mlx_new_windows failed. :(");
 	}
 }
@@ -46,6 +47,7 @@ static void	load_texture(t_mlx_data *mlx_data, t_texture *tex, char *path)
 	{
 		mlx_destroy_display(mlx_data->mlx);
 		free(mlx_data->mlx);
+		clean_map_data(mlx_data->map_data);
 		exit_error("failed: load texture");
 	}
 	tex->img.addr = mlx_get_data_addr(
