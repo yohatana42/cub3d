@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 15:18:34 by takitaga          #+#    #+#             */
-/*   Updated: 2025/06/22 02:36:10 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:33:12 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int	key_hook(int keycode, t_mlx_data *mlx_data)
 	if (keycode == XK_Escape)
 		clean_up(mlx_data);
 	if (keycode == XK_w)
-		move_forward(mlx_data->ray);
+		move_forward(mlx_data);
 	if (keycode == XK_s)
-		move_backward(mlx_data->ray);
+		move_backward(mlx_data);
 	if (keycode == XK_a)
-		move_left(mlx_data->ray);
+		move_left(mlx_data);
 	if (keycode == XK_d)
-		move_right(mlx_data->ray);
+		move_right(mlx_data);
 	if (keycode == XK_Right)
 		rotate_right(mlx_data->ray);
 	if (keycode == XK_Left)
