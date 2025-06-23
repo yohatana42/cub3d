@@ -6,7 +6,7 @@
 /*   By: takitaga <takitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 15:04:14 by yohatana          #+#    #+#             */
-/*   Updated: 2025/06/22 03:23:25 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:37:20 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,10 +213,10 @@ void		draw_wall(
 				int draw_end);
 
 // keyhook_utils
-void		move_forward(t_ray_data *ray);
-void		move_backward(t_ray_data *ray);
-void		move_left(t_ray_data *ray);
-void		move_right(t_ray_data *ray);
+void		move_forward(t_mlx_data *mlx_data);
+void		move_backward(t_mlx_data *mlx_data);
+void		move_left(t_mlx_data *mlx_data);
+void		move_right(t_mlx_data *mlx_data);
 void		rotate_right(t_ray_data *ray);
 void		rotate_left(t_ray_data *ray);
 
